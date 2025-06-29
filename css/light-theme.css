@@ -1,0 +1,530 @@
+body.creativesoul-lightmode-on {
+	/* General */
+	--creativesoul-dark-color: #fff;
+	/* Template light color. #fff */
+	--creativesoul-light-color: #212121;
+	/* Template dark color. #212121 */
+
+	--creativesoul-bg-color: #fff;
+	/* Template background color. #fff */
+	--creativesoul-text-color: #212121;
+	/* Template text color. #212121 */
+	--creativesoul-text-muted-color: #666;
+	/* Template text muted color. #666 */
+	--creativesoul-border-color: #666;
+	/* Template borders color. #666 */
+
+	--creativesoul-linear-text-bg-color: rgb(0 0 0 / 20%);
+	/* Template text fill color. For linear text reveal effect (do not change it!). rgb(0 0 0 / 20%) */
+
+	/* Cursor ball */
+	--creativesoul-ball-border-color: #999;
+	/* Ball border color. #999 */
+}
+
+.creativesoul-style-switch {
+	position: relative;
+	margin-left: 40px;
+}
+
+@media (max-width: 1024px) {
+	.creativesoul-style-switch {
+		margin-left: 0;
+		margin-right: 20px;
+	}
+}
+
+.creativesoul-style-switch-inner {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	background-color: rgb(179 179 179 / 35%);
+	line-height: 1;
+	font-size: 15px;
+	cursor: pointer;
+	border-radius: 100%;
+	transition: background-color .3s, color .3s;
+}
+
+.creativesoul-style-switch-inner:hover {}
+
+.creativesoul-stsw-dark {
+	display: none;
+}
+
+body.creativesoul-lightmode-on .creativesoul-stsw-dark {
+	display: block;
+}
+
+body.creativesoul-lightmode-on .creativesoul-stsw-light {
+	display: none;
+}
+
+/* If header layout-2 is enabled. */
+#creativesoul-header.creativesoul-header-alter .creativesoul-style-switch {}
+
+@media (max-width: 1024px) {
+	#creativesoul-header.creativesoul-header-alter .creativesoul-style-switch {
+		margin-left: 0;
+		margin-right: 25px;
+	}
+}
+
+/* Disable on "portfolio-slider.html" page (since it does not affect the elements on this page, it has been removed to avoid confusion). It is still visible in the mobile menu. */
+body.creativesoul-portfolio-slider-on:not(.creativesoul-m-menu-open) .creativesoul-style-switch {
+	display: none;
+}
+
+
+/* ------------------------------------------------------------- *
+ * General
+/* ------------------------------------------------------------- */
+
+/* Selection */
+body.creativesoul-lightmode-on ::selection {
+	color: var(--creativesoul-dark-color);
+	-webkit-text-fill-color: var(--creativesoul-dark-color);
+	text-shadow: none;
+	background: var(--creativesoul-main-color);
+}
+
+body.creativesoul-lightmode-on ::-moz-selection {
+	color: var(--creativesoul-dark-color);
+	-webkit-text-fill-color: var(--creativesoul-dark-color);
+	text-shadow: none;
+	background: var(--creativesoul-main-color);
+	/* Firefox */
+}
+
+body.creativesoul-lightmode-on ::-webkit-selection {
+	color: var(--creativesoul-dark-color);
+	-webkit-text-fill-color: var(--creativesoul-dark-color);
+	text-shadow: none;
+	background: var(--creativesoul-main-color);
+	/* Safari */
+}
+
+
+/* ------------------------------------------------------------- *
+ * Logo
+/* ------------------------------------------------------------- */
+
+body.creativesoul-lightmode-on .creativesoul-logo-light {
+	display: none;
+}
+
+body.creativesoul-lightmode-on .creativesoul-logo-dark {
+	display: block;
+}
+
+
+/* ------------------------------------------------------------- *
+ * Page header
+/* ------------------------------------------------------------- */
+
+/* If the page header background image is light (effect only if the image exist)
+================================================ */
+body.creativesoul-lightmode-on.ph-bg-is-light-on.creativesoul-ph-visible:not(.creativesoul-m-menu-active) #creativesoul-header:not(.creativesoul-filled) {
+	color: var(--creativesoul-light-color);
+}
+
+/* Make logo dark */
+body.creativesoul-lightmode-on.ph-bg-is-light-on.creativesoul-ph-visible:not(.creativesoul-m-menu-active) #creativesoul-header:not(.creativesoul-filled) .creativesoul-logo-light {
+	display: none;
+}
+
+body.creativesoul-lightmode-on.ph-bg-is-light-on.creativesoul-ph-visible:not(.creativesoul-m-menu-active) #creativesoul-header:not(.creativesoul-filled) .creativesoul-logo-dark {
+	display: block;
+}
+
+/* Make menu items dark (for desctop only) */
+@media (min-width: 1025px) {
+
+	body.creativesoul-lightmode-on.ph-bg-is-light-on.creativesoul-ph-visible #creativesoul-header:not(.creativesoul-filled) .creativesoul-main-menu-list>li>a,
+	body.creativesoul-lightmode-on.ph-bg-is-light-on.creativesoul-ph-visible #creativesoul-header:not(.creativesoul-filled) .creativesoul-main-menu-list>li>.creativesoul-submenu-trigger>a {
+		color: var(--creativesoul-light-color);
+	}
+
+	body.creativesoul-lightmode-on.ph-bg-is-light-on.creativesoul-ph-visible #creativesoul-header:not(.creativesoul-filled) .creativesoul-submenu-master>.creativesoul-submenu-trigger>a::after {
+		background-color: var(--creativesoul-light-color);
+	}
+}
+
+/* Make mobile menu trigger dark */
+body.creativesoul-lightmode-on.ph-bg-is-light-on.creativesoul-ph-visible:not(.creativesoul-m-menu-active) #creativesoul-header:not(.creativesoul-filled) .creativesoul-m-menu-toggle-btn-text {
+	color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.ph-bg-is-light-on.creativesoul-ph-visible:not(.creativesoul-m-menu-active) #creativesoul-header:not(.creativesoul-filled) .creativesoul-m-menu-toggle-btn span::before,
+body.creativesoul-lightmode-on.ph-bg-is-light-on.creativesoul-ph-visible:not(.creativesoul-m-menu-active) #creativesoul-header:not(.creativesoul-filled) .creativesoul-m-menu-toggle-btn span::after {
+	background-color: var(--creativesoul-light-color);
+}
+
+/* Make header buttons dark */
+@media (min-width: 1025px) {
+	body.creativesoul-lightmode-on.ph-bg-is-light-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-secondary {
+		background-color: var(--creativesoul-light-color);
+	}
+
+	body.creativesoul-lightmode-on.ph-bg-is-light-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-secondary>*,
+	body.creativesoul-lightmode-on.ph-bg-is-light-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-secondary>*::after {
+		color: var(--creativesoul-dark-color);
+	}
+
+	body.creativesoul-lightmode-on.ph-bg-is-light-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-outline {
+		box-shadow: inset 0 0 0 2px var(--creativesoul-light-color);
+	}
+
+	body.creativesoul-lightmode-on.ph-bg-is-light-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-outline>*,
+	body.creativesoul-lightmode-on.ph-bg-is-light-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-outline>*::after {
+		color: var(--creativesoul-light-color);
+	}
+
+	body.creativesoul-lightmode-on.ph-bg-is-light-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-link>*,
+	body.creativesoul-lightmode-on.ph-bg-is-light-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-link>*::after {
+		color: var(--creativesoul-light-color);
+	}
+
+	body.creativesoul-lightmode-on.ph-bg-is-light-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-line {
+		background-color: var(--creativesoul-light-color);
+	}
+}
+
+/* Make page header elements dark */
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header,
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header a {
+	color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header .creativesoul-scroll-down text {
+	fill: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header .creativesoul-scroll-down .creativesoul-scrd-icon {
+	color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header .ph-share-trigger,
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header .ph-share-buttons>ul>li a {
+	color: var(--creativesoul-light-color);
+}
+
+/* Make page header buttons dark */
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header .creativesoul-btn-secondary {
+	background-color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header .creativesoul-btn-secondary>*,
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header .creativesoul-btn-secondary>*::after {
+	color: var(--creativesoul-dark-color);
+}
+
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header .creativesoul-btn-outline {
+	box-shadow: inset 0 0 0 2px var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header .creativesoul-btn-outline>*,
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header .creativesoul-btn-outline>*::after {
+	color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header .creativesoul-big-round-ptn-inner {
+	color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header .creativesoul-big-round-ptn-inner:hover,
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header .creativesoul-big-round-ptn-inner:focus {
+	color: #FFF;
+}
+
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header .creativesoul-btn-link>*,
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header .creativesoul-btn-link>*::after {
+	color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.ph-bg-is-light-on #page-header .creativesoul-btn-line {
+	background-color: var(--creativesoul-light-color);
+}
+
+
+/* ------------------------------------------------------------- *
+ * If class "creativesoul-section-bg-on" is enabled on parent element
+/* ------------------------------------------------------------- */
+
+body.creativesoul-lightmode-on .creativesoul-section-bg-on {
+	color: var(--creativesoul-dark-color);
+}
+
+body.creativesoul-lightmode-on .creativesoul-section-bg-on .creativesoul-text-reveal>span {
+	color: var(--creativesoul-dark-color);
+	-webkit-text-fill-color: rgb(255 255 255 / 20%);
+}
+
+
+/* Buttons 
+=========== */
+body.creativesoul-lightmode-on .creativesoul-section-bg-on .creativesoul-btn-secondary {
+	background-color: var(--creativesoul-dark-color);
+}
+
+body.creativesoul-lightmode-on .creativesoul-section-bg-on .creativesoul-btn-secondary>*,
+body.creativesoul-lightmode-on .creativesoul-section-bg-on .creativesoul-btn-secondary>*::after {
+	color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on .creativesoul-section-bg-on .creativesoul-btn-outline {
+	box-shadow: inset 0 0 0 2px var(--creativesoul-dark-color);
+}
+
+body.creativesoul-lightmode-on .creativesoul-section-bg-on .creativesoul-btn-outline>*,
+body.creativesoul-lightmode-on .creativesoul-section-bg-on .creativesoul-btn-outline>*::after {
+	color: var(--creativesoul-dark-color);
+}
+
+
+/* ------------------------------------------------------------- *
+ * creativesoul-Ggrid
+/* ------------------------------------------------------------- */
+
+/* creativesoul-Ggrid categories nav
+=========================== */
+body.creativesoul-lightmode-on .ttgr-cat-nav {
+	background-color: rgb(229 227 220 / 90%);
+}
+
+
+/* ------------------------------------------------------------- *
+ * Horizontal accordion
+/* ------------------------------------------------------------- */
+
+/* Horizontal accordion item alternative hover (no effect on small screens!) */
+@media (min-width: 1025px) {
+
+	body.creativesoul-lightmode-on .creativesoul-hac-alter-hover .creativesoul-hac-item:first-child,
+	body.creativesoul-lightmode-on .creativesoul-hac-alter-hover .creativesoul-hac-item.active {
+		background-color: var(--creativesoul-light-color);
+		color: var(--creativesoul-dark-color);
+		border-color: transparent;
+	}
+
+	body.creativesoul-lightmode-on .creativesoul-hac-alter-hover .creativesoul-hac-item:first-child.inactive {
+		background-color: var(--creativesoul-bg-color);
+		color: var(--creativesoul-text-color);
+		border-color: var(--creativesoul-border-color);
+	}
+}
+
+/* Horizontal accordion item for small screens only (effects only with alternative hover!) */
+@media (max-width: 1024px) {
+	body.creativesoul-lightmode-on .creativesoul-hac-alter-hover .creativesoul-hac-item {
+		background-color: var(--creativesoul-light-color);
+		color: var(--creativesoul-dark-color);
+		border-color: transparent;
+	}
+
+	body.creativesoul-lightmode-on .creativesoul-hac-alter-hover .creativesoul-hac-item .creativesoul-btn-outline>*,
+	body.creativesoul-lightmode-on .creativesoul-hac-alter-hover .creativesoul-hac-item .creativesoul-btn-outline>*:after {
+		color: var(--creativesoul-dark-color);
+	}
+
+	body.creativesoul-lightmode-on .creativesoul-hac-alter-hover .creativesoul-hac-item .creativesoul-btn-outline {
+		box-shadow: inset 0 0 0 2px var(--creativesoul-dark-color);
+	}
+
+	body.creativesoul-lightmode-on .creativesoul-hac-alter-hover .creativesoul-hac-item-count::before {
+		opacity: .6;
+	}
+}
+
+
+/* ------------------------------------------------------------- *
+ * Logo wall
+/* ------------------------------------------------------------- */
+
+body.creativesoul-lightmode-on .creativesoul-logo-wall-item,
+body.creativesoul-lightmode-on a.creativesoul-logo-wall-item:hover {
+	background-color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on .creativesoul-logo-wall.creativesoul-lw-bordered a.creativesoul-logo-wall-item:not(:hover) .creativesoul-lv-img-dark {
+	display: block;
+}
+
+body.creativesoul-lightmode-on .creativesoul-logo-wall.creativesoul-lw-bordered a.creativesoul-logo-wall-item:not(:hover) .creativesoul-lv-img-light {
+	display: none;
+}
+
+
+/* ------------------------------------------------------------- *
+ * Content carousel 
+/* ------------------------------------------------------------- */
+
+body.creativesoul-lightmode-on .creativesoul-content-carousel.cc-pagination-outside .swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
+	background-color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on .creativesoul-content-carousel.cc-pagination-outside .creativesoul-cc-pagination-fraction {
+	color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on .creativesoul-content-carousel.cc-pagination-outside .creativesoul-cc-pagination-progressbar {
+	background-color: rgb(139 138 138 / 30%);
+}
+
+body.creativesoul-lightmode-on .creativesoul-content-carousel.cc-pagination-outside .creativesoul-cc-pagination-progressbar .swiper-pagination-progressbar-fill {
+	background-color: var(--creativesoul-light-color);
+}
+
+
+/* ------------------------------------------------------------- *
+ * Portfolio sticky
+/* ------------------------------------------------------------- */
+
+body.creativesoul-lightmode-on .creativesoul-stp-item.stpi-bg-is-light,
+body.creativesoul-lightmode-on .creativesoul-stp-item.stpi-bg-is-light .creativesoul-stp-item-caption {
+	color: var(--creativesoul-light-color);
+}
+
+
+/* ------------------------------------------------------------- *
+ * Portfolio slider 
+/* ------------------------------------------------------------- */
+
+/* If portfolio slider item background is light
+================================================ */
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on:not(.creativesoul-m-menu-active) #creativesoul-header:not(.creativesoul-filled) {
+	color: var(--creativesoul-light-color);
+}
+
+/* Make logo dark */
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on:not(.creativesoul-m-menu-active) #creativesoul-header:not(.creativesoul-filled) .creativesoul-logo-light {
+	display: none;
+}
+
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on:not(.creativesoul-m-menu-active) #creativesoul-header:not(.creativesoul-filled) .creativesoul-logo-dark {
+	display: block;
+}
+
+/* Make menu items dark (for desctop only) */
+@media (min-width: 1025px) {
+
+	body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-main-menu-list>li>a,
+	body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-main-menu-list>li>.creativesoul-submenu-trigger>a {
+		color: var(--creativesoul-light-color);
+	}
+
+	body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-submenu-master>.creativesoul-submenu-trigger>a::after {
+		background-color: var(--creativesoul-light-color);
+	}
+}
+
+/* Make mobile menu trigger dark */
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on:not(.creativesoul-m-menu-active) #creativesoul-header:not(.creativesoul-filled) .creativesoul-m-menu-toggle-btn-text {
+	color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on:not(.creativesoul-m-menu-active) #creativesoul-header:not(.creativesoul-filled) .creativesoul-m-menu-toggle-btn span::before,
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on:not(.creativesoul-m-menu-active) #creativesoul-header:not(.creativesoul-filled) .creativesoul-m-menu-toggle-btn span::after {
+	background-color: var(--creativesoul-light-color);
+}
+
+/* Make header buttons dark */
+@media (min-width: 1025px) {
+	body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-secondary {
+		background-color: var(--creativesoul-light-color);
+	}
+
+	body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-secondary>*,
+	body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-secondary>*::after {
+		color: var(--creativesoul-dark-color);
+	}
+
+	body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-outline {
+		box-shadow: inset 0 0 0 2px var(--creativesoul-light-color);
+	}
+
+	body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-outline>*,
+	body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-outline>*::after {
+		color: var(--creativesoul-light-color);
+	}
+
+	body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-link>*,
+	body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-link>*::after {
+		color: var(--creativesoul-light-color);
+	}
+
+	body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on #creativesoul-header:not(.creativesoul-filled) .creativesoul-btn-line {
+		background-color: var(--creativesoul-light-color);
+	}
+}
+
+/* Make portfolio slider elements dark */
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-portfolio-slider,
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-portfolio-slider a,
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-posl-item-title,
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-posl-item-title a,
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-posl-item-category,
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-posl-item-category a,
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-portfolio-slider .creativesoul-social-buttons>ul>li a,
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-posl-nav-arrow,
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-posl-pagination {
+	color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-posl-pagination-fraction .swiper-pagination-total::before,
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-posl-pagination .swiper-pagination-bullet:not(.swiper-pagination-bullet-active),
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-posl-pagination-progressbar .swiper-pagination-progressbar-fill {
+	background-color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-posl-nav-arrow svg {
+	fill: var(--creativesoul-light-color);
+}
+
+/* Make portfolio slider buttons dark */
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-portfolio-slider .creativesoul-btn-secondary {
+	background-color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-portfolio-slider .creativesoul-btn-secondary>*,
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-portfolio-slider .creativesoul-btn-secondary>*::after {
+	color: var(--creativesoul-dark-color);
+}
+
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-portfolio-slider .creativesoul-btn-outline {
+	box-shadow: inset 0 0 0 2px var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-portfolio-slider .creativesoul-btn-outline>*,
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-portfolio-slider .creativesoul-btn-outline>*::after {
+	color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-portfolio-slider .creativesoul-big-round-ptn-inner {
+	color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-portfolio-slider .creativesoul-big-round-ptn-inner:hover,
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-portfolio-slider .creativesoul-big-round-ptn-inner:focus {
+	color: #FFF;
+}
+
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-portfolio-slider .creativesoul-btn-link>*,
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-portfolio-slider .creativesoul-btn-link>*::after {
+	color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on .creativesoul-portfolio-slider .creativesoul-btn-line {
+	background-color: var(--creativesoul-light-color);
+}
+
+/* Make portfolio slider cursor drag dark */
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on #ball.ball-drag-mouse-down {
+	border-color: var(--creativesoul-light-color);
+}
+
+body.creativesoul-lightmode-on.creativesoul-posl-light-bg-on #ball .ball-drag-mouse-down-inner {
+	color: var(--creativesoul-light-color);
+}
