@@ -1,60 +1,6 @@
-/* =================================================================
-* Template JS
-* 
-* Template:    Jesper - Creative Portfolio Showcase HTML Website Template
-* Author:      Themetorium
-* URL:         https://themetorium.net/
-*
-==================================================================== */
-
-
-// Table of Content
-// =================
-// Detect touch device
-// Page transitions
-// Background noise
-// Lenis
-// Header
-// Main menu (classic)
-// Page header
-// Isotope
-// Portfolio grid
-// Portfolio compact list
-// Portfolio preview list
-// Portfolio sticky
-// Portfolio slider (full screen)
-// creativesoul-Sticker
-// Sticky horizontal scroll
-// creativesoul-Gallery
-// Content slider
-// Content carousel
-// Next project
-// Fancybox (lightbox plugin)
-// Scrolling text
-// Accordion
-// Horizontal accordion
-// creativesoul-Image
-// Forms
-// Contact form
-// Scroll between anchors 
-// Scroll to top
-// GSAP ScrollTrigger plugin 
-// Defer videos
-// Magic cursor 
-// Miscellaneous
-
-
-
-
 (function ($) {
 	'use strict';
 
-
-
-	// ==============================================
-	// Detect touch device (do not remove!!!)
-	// Info: https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent#mobile_device_detection
-	// ==============================================
 
 	var tt_isMobile = false;
 	if ("maxTouchPoints" in navigator) {
@@ -70,7 +16,7 @@
 		} else {
 			// Only as a last resort, fall back to user agent sniffing
 			tt_isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Nokia|Opera Mini|Tablet|Mobile/i.test(navigator.userAgent);
-	  }
+		}
 	}
 
 	// Add class "is-mobile" to </body>
@@ -99,9 +45,9 @@
 		// ========================================
 		let $phCaptionAppear = $(".ph-caption-title, .ph-caption-subtitle, .ph-caption-description");
 		if ($phCaptionAppear.length) {
-			$phCaptionAppear.each(function() {
+			$phCaptionAppear.each(function () {
 				let $this = $(this);
-				$this.contents().each(function() {
+				$this.contents().each(function () {
 					if (this.nodeType === 3) { // Text node
 						let $text = $(this).text();
 						let $wrappedText = $text.replace(/([^\s]+)/g, '<span class="creativesoul-cap-word-wrap"><span class="creativesoul-cap-word">$1</span></span>');
@@ -132,7 +78,7 @@
 		// Page transitions In 
 		// ====================
 		function ttAnimateTransitionIn() {
-			let tl_transitIn = gsap.timeline({ defaults: { duration: $tt_ptrDuration, ease: Expo.easeInOut }});
+			let tl_transitIn = gsap.timeline({ defaults: { duration: $tt_ptrDuration, ease: Expo.easeInOut } });
 			if ($tt_pageTransition.length) {
 				tl_transitIn.set($tt_pageTransition, { autoAlpha: 1 });
 				tl_transitIn.to($tt_ptrContentWrap, { autoAlpha: 0 }, 0.1);
@@ -146,55 +92,55 @@
 		// Page transitions Out
 		// =====================
 		function ttAnimateTransitionOut() {
-			let tl_transitOut = gsap.timeline({ defaults: { duration: $tt_ptrDuration, ease: Expo.easeInOut }});
+			let tl_transitOut = gsap.timeline({ defaults: { duration: $tt_ptrDuration, ease: Expo.easeInOut } });
 			if ($tt_pageTransition.length) {
 				tl_transitOut.to($tt_ptrPreloader, { autoAlpha: 0 });
 				tl_transitOut.to($tt_ptrOverlayTop, { scaleX: 0, transformOrigin: "center left" }, 0.5);
 				tl_transitOut.to($tt_ptrOverlayBottom, { scaleX: 0, transformOrigin: "center right" }, 0.5);
-				tl_transitOut.from($tt_ptrContentWrap, { autoAlpha: 0, clearProps:"all" }, 0.7);
+				tl_transitOut.from($tt_ptrContentWrap, { autoAlpha: 0, clearProps: "all" }, 0.7);
 			}
 
 			// Animate page header elements
 			if ($(".ph-caption-title").length) {
-				tl_transitOut.from(".ph-caption-title .creativesoul-cap-word", { yPercent: 101, ease: Power2.easeOut, clearProps:"yPercent" }, 1.3);
+				tl_transitOut.from(".ph-caption-title .creativesoul-cap-word", { yPercent: 101, ease: Power2.easeOut, clearProps: "yPercent" }, 1.3);
 				// tl_transitOut.set(".ph-caption-title .creativesoul-cap-word-wrap", { overflow: "unset", clearProps: "overflow" }, 1.87); // Remove "overflow: hidden;"
 			}
 
 			if ($(".ph-caption-subtitle").length) {
-				tl_transitOut.from(".ph-caption-subtitle .creativesoul-cap-word", { yPercent: 101, ease: Power2.easeOut, clearProps:"yPercent" }, 1.8);
+				tl_transitOut.from(".ph-caption-subtitle .creativesoul-cap-word", { yPercent: 101, ease: Power2.easeOut, clearProps: "yPercent" }, 1.8);
 				// tl_transitOut.set(".ph-caption-subtitle .creativesoul-cap-word-wrap", { overflow: "unset", clearProps: "overflow" }, 2.3); // Remove "overflow: hidden;"
 			}
 
 			if ($(".ph-caption-categories").length) {
-				tl_transitOut.from(".ph-caption-categories", { y: 20, autoAlpha: 0, ease: Power2.easeOut, clearProps:"all" }, 1.8);
+				tl_transitOut.from(".ph-caption-categories", { y: 20, autoAlpha: 0, ease: Power2.easeOut, clearProps: "all" }, 1.8);
 			}
 
 			if ($(".ph-caption-description").length) {
-				tl_transitOut.from(".ph-caption-description .creativesoul-cap-word", { yPercent: 101, ease: Power2.easeOut, clearProps:"yPercent" }, 2.1);
+				tl_transitOut.from(".ph-caption-description .creativesoul-cap-word", { yPercent: 101, ease: Power2.easeOut, clearProps: "yPercent" }, 2.1);
 			}
 
 			if ($(".ph-caption-meta").length) {
-				tl_transitOut.from(".ph-caption-meta", { y: 20, autoAlpha: 0, ease: Power2.easeOut, clearProps:"all" }, 2.1);
+				tl_transitOut.from(".ph-caption-meta", { y: 20, autoAlpha: 0, ease: Power2.easeOut, clearProps: "all" }, 2.1);
 			}
 
 			if ($(".ph-caption").find(".creativesoul-btn").length) {
-				tl_transitOut.from(".ph-caption .creativesoul-btn", { y: 20, autoAlpha: 0, ease: Power2.easeOut, clearProps:"all" }, 2.5);
+				tl_transitOut.from(".ph-caption .creativesoul-btn", { y: 20, autoAlpha: 0, ease: Power2.easeOut, clearProps: "all" }, 2.5);
 			}
 
 			if ($(".ph-image, .ph-video").length) {
-				tl_transitOut.from(".ph-image img, .ph-video video", { duration: 1.2, scale: 1.2, autoAlpha: 0, ease: Power2.easeOut, clearProps:"all" }, 1);
+				tl_transitOut.from(".ph-image img, .ph-video video", { duration: 1.2, scale: 1.2, autoAlpha: 0, ease: Power2.easeOut, clearProps: "all" }, 1);
 			}
 
 			if ($(".ph-social").length) {
-				tl_transitOut.from($(".ph-social > ul > li"), { y: 40, autoAlpha: 0, stagger: 0.1, ease: Power2.easeOut, clearProps:"all" }, 1.7);
+				tl_transitOut.from($(".ph-social > ul > li"), { y: 40, autoAlpha: 0, stagger: 0.1, ease: Power2.easeOut, clearProps: "all" }, 1.7);
 			}
 
 			if ($(".ph-share").length) {
-				tl_transitOut.from($(".ph-share"), { y: 40, autoAlpha: 0, stagger: 0.1, ease: Power2.easeOut, clearProps:"all" }, 1.7);
+				tl_transitOut.from($(".ph-share"), { y: 40, autoAlpha: 0, stagger: 0.1, ease: Power2.easeOut, clearProps: "all" }, 1.7);
 			}
 
 			if ($(".creativesoul-scroll-down").length) {
-				tl_transitOut.from($(".creativesoul-scroll-down-inner"), { y: 80, autoAlpha: 0, ease: Power2.easeOut, clearProps:"all" }, 1.7);
+				tl_transitOut.from($(".creativesoul-scroll-down-inner"), { y: 80, autoAlpha: 0, ease: Power2.easeOut, clearProps: "all" }, 1.7);
 			}
 
 		}
@@ -206,7 +152,7 @@
 			}
 		}
 
-	   // Optimize event handling (on link click)
+		// Optimize event handling (on link click)
 		$("a")
 			.not('.no-transition') // omit from selection.
 			.not('[target="_blank"]') // omit from selection.
@@ -218,17 +164,17 @@
 			.not('.creativesoul-submenu-trigger > a[href=""]') // omit from selection
 			.not('.ttgr-cat-classic-item a') // omit from selection
 			.not('.ttgr-cat-item a') // omit from selection
-			.on('click', function(e) {
+			.on('click', function (e) {
 				e.preventDefault();
 				setTimeout((url) => {
 					window.location = url;
 				}, $tt_ptrDuration * 2000, this.href);
-			
-			ttAnimateTransitionIn();
-		});
+
+				ttAnimateTransitionIn();
+			});
 
 		// Animations on page load
-		setTimeout(function() {
+		setTimeout(function () {
 			ttAnimateTransitionOut();
 		}, 0);
 	}
@@ -239,9 +185,9 @@
 	// Background noise
 	// =================================================================================
 
-	if ($("body").hasClass("creativesoul-noise")) { 
-		$(".creativesoul-noise").each(function() {
-			$(this).prepend('<div class="creativesoul-bg-noise"></div>'); 
+	if ($("body").hasClass("creativesoul-noise")) {
+		$(".creativesoul-noise").each(function () {
+			$(this).prepend('<div class="creativesoul-bg-noise"></div>');
 		});
 	}
 
@@ -253,7 +199,7 @@
 	// ===========================================================
 
 	if ($("body").hasClass("creativesoul-smooth-scroll")) {
-		if(!tt_isMobile) { // No effect on touch devices!
+		if (!tt_isMobile) { // No effect on touch devices!
 
 			// Init Lenis
 			var lenis = new Lenis({
@@ -263,7 +209,7 @@
 			// GSAP ScrollTrigger integration
 			lenis.on('scroll', ScrollTrigger.update)
 			gsap.ticker.add((time) => {
-			  lenis.raf(time * 1000);
+				lenis.raf(time * 1000);
 			})
 			gsap.ticker.lagSmoothing(0);
 
@@ -283,7 +229,7 @@
 	if ($("#creativesoul-header").hasClass("creativesoul-header-scroll")) {
 		$("body").addClass("creativesoul-header-scroll-on");
 	}
-	
+
 	// Hide header on scroll down and show on scroll up.
 	// =================================================
 	let didScroll;
@@ -293,11 +239,11 @@
 	let tt_HeaderScroll = $(".creativesoul-header-scroll");
 	let navbarHeight = tt_HeaderScroll.outerHeight();
 
-	$(window).scroll(function(event) {
+	$(window).scroll(function (event) {
 		didScroll = true;
 	});
 
-	setInterval(function() { 
+	setInterval(function () {
 		if (didScroll) {
 			hasScrolled();
 			didScroll = false;
@@ -306,17 +252,17 @@
 
 	function hasScrolled() {
 		let st = $(window).scrollTop();
-	  
+
 		// Make sure they scroll more than delta
 		if (Math.abs(lastScrollTop - st) <= delta)
 			return;
 
-			// If scrolled down and are past the header, add class .creativesoul-fly-up.
-			// This is necessary so you never see what is "behind" the header.
-			if (st > lastScrollTop && st > navbarHeight) {
-				// Scroll Down
-				tt_HeaderScroll.addClass("creativesoul-fly-up");
-			} else {
+		// If scrolled down and are past the header, add class .creativesoul-fly-up.
+		// This is necessary so you never see what is "behind" the header.
+		if (st > lastScrollTop && st > navbarHeight) {
+			// Scroll Down
+			tt_HeaderScroll.addClass("creativesoul-fly-up");
+		} else {
 			// Scroll Up
 			if (st + $(window).height() < $(document).height()) {
 				tt_HeaderScroll.removeClass("creativesoul-fly-up");
@@ -343,12 +289,12 @@
 	// Note. Add the "creativesoul-lightmode-default" class to the <body> tag of your HTML page to enable light mode by default (you must clear your browser's cookies and cache first!).
 
 	// Style switch button
-	$(".creativesoul-style-switch").on("click", function() {
+	$(".creativesoul-style-switch").on("click", function () {
 		$(this).toggleClass("active");
 	});
 
 	// Check for saved 'creativesoul-lightmode-on' in localStorage
-	let lightMode = localStorage.getItem('creativesoul-lightmode-on'); 
+	let lightMode = localStorage.getItem('creativesoul-lightmode-on');
 
 	// Define enable and disable functions for light mode
 	function enableLightMode() {
@@ -374,13 +320,13 @@
 	}
 
 	// Toggle light mode on button click
-	$('.creativesoul-style-switch').on('click', function() {
-		lightMode = localStorage.getItem('creativesoul-lightmode-on'); 
+	$('.creativesoul-style-switch').on('click', function () {
+		lightMode = localStorage.getItem('creativesoul-lightmode-on');
 
 		if (lightMode !== 'enabled') {
 			enableLightMode();
-		} else {  
-			disableLightMode(); 
+		} else {
+			disableLightMode();
 		}
 	});
 
@@ -402,14 +348,14 @@
 	// ==========
 
 	// Open submenu on hover
-	$(".creativesoul-submenu-wrap").on("mouseenter", function() {
+	$(".creativesoul-submenu-wrap").on("mouseenter", function () {
 		$(this).addClass("creativesoul-submenu-open");
-	}).on("mouseleave", function() {
+	}).on("mouseleave", function () {
 		$(this).removeClass("creativesoul-submenu-open");
 	});
 
 	// Prevent submenu trigger click if href is emty or contains # or #0
-	$(".creativesoul-submenu-trigger > a").on("click", function(e) {
+	$(".creativesoul-submenu-trigger > a").on("click", function (e) {
 		let href = $(this).attr("href");
 		if (!href || href === "#" || href === "#0") {
 			e.preventDefault();
@@ -422,7 +368,7 @@
 		// Keeping sub-menus inside screen (useful if multi level sub-menus are used). No effect on mobile menu!
 		let $window = $(window);
 		let $submenuTrigger = $(".creativesoul-submenu-trigger").parent();
-		$submenuTrigger.on("mouseenter", function() {
+		$submenuTrigger.on("mouseenter", function () {
 			let $ttSubMenu = $(this).children(".creativesoul-submenu");
 			let ttSubMenuPos = $ttSubMenu.offset();
 
@@ -436,14 +382,14 @@
 		if (tt_isMobile) {
 			const ttSubmenuTriggers = $(".creativesoul-submenu-trigger > a");
 
-			ttSubmenuTriggers.each(function() {
+			ttSubmenuTriggers.each(function () {
 				const href = $(this).attr("href");
 				if (href && href !== "#" && href !== "#0") {
 					$(this).closest(".creativesoul-submenu-trigger").addClass("creativesoul-no-first-click");
 				}
 			});
 
-			$(document).on("click", function(e) {
+			$(document).on("click", function (e) {
 				const tt_mmTarget = $(e.target);
 				const ttNoFirstClick = tt_mmTarget.closest(".creativesoul-no-first-click");
 				const ttSubmenuOpen = tt_mmTarget.closest(".creativesoul-submenu-open");
@@ -464,7 +410,7 @@
 	// ===============================
 
 	// Open/close mobile menu on toggle button click
-	$("#creativesoul-m-menu-toggle-btn-wrap").on("click", function() {
+	$("#creativesoul-m-menu-toggle-btn-wrap").on("click", function () {
 		$("html").toggleClass("creativesoul-no-scroll");
 		$("body").toggleClass("creativesoul-m-menu-open").addClass("creativesoul-m-menu-active");
 		if ($("body").hasClass("creativesoul-m-menu-open")) {
@@ -474,19 +420,19 @@
 
 			// Menu animationIn
 			let tl_mMenuIn = gsap.timeline({
-				onComplete: function() { 
-					$("body").removeClass("creativesoul-m-menu-toggle-no-click"); 
+				onComplete: function () {
+					$("body").removeClass("creativesoul-m-menu-toggle-no-click");
 				}
 			});
 
-				tl_mMenuIn.to(".creativesoul-main-menu", { duration: 0.4, autoAlpha: 1 });
-				tl_mMenuIn.from(".creativesoul-main-menu-content > ul > li", { duration: 0.4, y: 80, autoAlpha: 0, stagger: 0.05, ease: Power2.easeOut, clearProps:"all" });
+			tl_mMenuIn.to(".creativesoul-main-menu", { duration: 0.4, autoAlpha: 1 });
+			tl_mMenuIn.from(".creativesoul-main-menu-content > ul > li", { duration: 0.4, y: 80, autoAlpha: 0, stagger: 0.05, ease: Power2.easeOut, clearProps: "all" });
 
 			// Mobile submenu accordion
 			$('.creativesoul-submenu-trigger > a[href="#"], .creativesoul-submenu-trigger > a[href="#0"], .creativesoul-submenu-trigger > a[href=""]').parent(".creativesoul-submenu-trigger").append('<span class="creativesoul-submenu-trigger-m"></span>'); // if href contains #
 			$(".creativesoul-submenu-trigger").append('<span class="creativesoul-m-caret"></span>');
 
-			$(".creativesoul-submenu-trigger-m, .creativesoul-m-caret").on("click", function() {
+			$(".creativesoul-submenu-trigger-m, .creativesoul-m-caret").on("click", function () {
 				let $this = $(this).parent();
 				if ($this.hasClass("creativesoul-m-submenu-open")) {
 					$this.removeClass("creativesoul-m-submenu-open");
@@ -501,27 +447,27 @@
 
 			// On menu link click
 			$(".creativesoul-main-menu a, .creativesoul-logo a")
-			.not('[target="_blank"]') // omit links that open in a new tab
-			.not('[href="#"]') // omit dummy links
-			.not('[href^="mailto"]') // omit mailto links
-			.not('[href^="tel"]') // omit tel links
-			.on('click', function() {
-				let tl_mMenuClick = gsap.timeline({
-					onComplete: function() { 
-						$("body").removeClass("creativesoul-m-menu-open creativesoul-m-menu-active");
-						$("html").removeClass("creativesoul-no-scroll");
+				.not('[target="_blank"]') // omit links that open in a new tab
+				.not('[href="#"]') // omit dummy links
+				.not('[href^="mailto"]') // omit mailto links
+				.not('[href^="tel"]') // omit tel links
+				.on('click', function () {
+					let tl_mMenuClick = gsap.timeline({
+						onComplete: function () {
+							$("body").removeClass("creativesoul-m-menu-open creativesoul-m-menu-active");
+							$("html").removeClass("creativesoul-no-scroll");
 
-				       // Close submenus if they are open
-						if ($(".creativesoul-submenu-trigger").hasClass("creativesoul-m-submenu-open")) {
-							$(".creativesoul-submenu").slideUp(350);
-							$(".creativesoul-submenu-trigger").removeClass("creativesoul-m-submenu-open");
+							// Close submenus if they are open
+							if ($(".creativesoul-submenu-trigger").hasClass("creativesoul-m-submenu-open")) {
+								$(".creativesoul-submenu").slideUp(350);
+								$(".creativesoul-submenu-trigger").removeClass("creativesoul-m-submenu-open");
+							}
 						}
-					}
+					});
+					tl_mMenuClick.to(".creativesoul-main-menu-content > ul > li", { duration: 0.4, y: -80, autoAlpha: 0, stagger: 0.05, ease: Power2.easeIn });
+					tl_mMenuClick.to(".creativesoul-main-menu", { duration: 0.4, autoAlpha: 0, clearProps: "all" }, "+=0.2");
+					tl_mMenuClick.set(".creativesoul-main-menu-content > ul > li", { clearProps: "all" });
 				});
-				tl_mMenuClick.to(".creativesoul-main-menu-content > ul > li", { duration: 0.4, y: -80, autoAlpha: 0, stagger: 0.05, ease: Power2.easeIn });
-				tl_mMenuClick.to(".creativesoul-main-menu", { duration: 0.4, autoAlpha: 0, clearProps:"all" }, "+=0.2");
-				tl_mMenuClick.set(".creativesoul-main-menu-content > ul > li", { clearProps:"all" });
-			});
 
 			// Close mobile menu if orientation change
 			function ttCloseMobileMenu() {
@@ -533,21 +479,21 @@
 				gsap.set(".creativesoul-main-menu, .creativesoul-main-menu-content > ul > li", { clearProps: "all" });
 			}
 			$(window).on("orientationchange", ttCloseMobileMenu); // Close mobile menu on orientation change (for mobile view)
-			
-			$(window).on("resize", function() { // Close mobile menu on resize (for desktop view)
+
+			$(window).on("resize", function () { // Close mobile menu on resize (for desktop view)
 				if (window.matchMedia("(min-width: 1025px)").matches) {
 					ttCloseMobileMenu();
 				}
 			});
 
-		} else {	
+		} else {
 
 			// Disable toggle button click until the animations last.
 			$("body").addClass("creativesoul-m-menu-toggle-no-click");
 
 			// Menu animationOut
 			let tl_mMenuOut = gsap.timeline({
-				onComplete: function() { 
+				onComplete: function () {
 					$("body").removeClass("creativesoul-m-menu-toggle-no-click creativesoul-m-menu-active");
 
 					// Close submenus if open
@@ -558,8 +504,8 @@
 				}
 			});
 			tl_mMenuOut.to(".creativesoul-main-menu-content > ul > li", { duration: 0.4, y: -80, autoAlpha: 0, stagger: 0.05, ease: Power2.easeIn });
-			tl_mMenuOut.to(".creativesoul-main-menu", { duration: 0.4, autoAlpha: 0, clearProps:"all" }, "+=0.2");
-			tl_mMenuOut.set(".creativesoul-main-menu-content > ul > li", { clearProps:"all" });
+			tl_mMenuOut.to(".creativesoul-main-menu", { duration: 0.4, autoAlpha: 0, clearProps: "all" }, "+=0.2");
+			tl_mMenuOut.set(".creativesoul-main-menu-content > ul > li", { clearProps: "all" });
 		}
 
 		return false;
@@ -599,7 +545,7 @@
 		}
 
 		if ($ttPageHeader.hasClass("ph-bg-is-light")) {
-			if ($(".ph-image").length || $(".ph-video").length) { 
+			if ($(".ph-image").length || $(".ph-video").length) {
 				$("body").addClass("ph-bg-is-light-on");
 			}
 		}
@@ -672,13 +618,13 @@
 		// =================================
 		const $phBgMedia = $(".ph-image, .ph-video");
 		if ($phBgMedia.length && $ttPageHeader.hasClass("ph-image-parallax")) {
-			gsap.to(".ph-image-inner, .ph-video-inner", { 
+			gsap.to(".ph-image-inner, .ph-video-inner", {
 				yPercent: 30,
 				ease: "none",
 				scrollTrigger: {
-					trigger: $ttPageHeader, 
-					start: 'top top', 
-					end: 'bottom top', 
+					trigger: $ttPageHeader,
+					start: 'top top',
+					end: 'bottom top',
 					scrub: true,
 					markers: false
 				}
@@ -689,14 +635,14 @@
 		// =============================
 		const $phCaption = $(".ph-caption");
 		if ($phCaption.length && $ttPageHeader.hasClass("ph-caption-parallax")) {
-			gsap.to(".ph-caption-inner", { 
+			gsap.to(".ph-caption-inner", {
 				// yPercent: 20,
 				scale: 0.85,
 				ease: "none",
 				scrollTrigger: {
-					trigger: $ttPageHeader, 
-					start: 'top top', 
-					end: 'bottom top', 
+					trigger: $ttPageHeader,
+					start: 'top top',
+					end: 'bottom top',
 					scrub: true,
 					markers: false,
 				}
@@ -711,13 +657,13 @@
 
 			const phScrTriggerHeight = $ttPageHeader.height();
 			const phScrWindowHeight = $phScrWindow.height();
-		  
+
 			// Check if the page header height is more than the window height
 			if (phScrTriggerHeight > phScrWindowHeight) {
 				$("body").addClass("ph-oversized-on");
 				$phScrItem.css("position", "fixed");
 
-				gsap.to($phScrItem, { 
+				gsap.to($phScrItem, {
 					ease: "none",
 					scrollTrigger: {
 						trigger: $ttPageHeader,
@@ -740,7 +686,7 @@
 
 			} else {
 
-				gsap.to($phScrItem, { 
+				gsap.to($phScrItem, {
 					scale: 0.8,
 					autoAlpha: 0,
 					ease: "none",
@@ -757,7 +703,7 @@
 		}
 
 	}
-	
+
 
 
 	// ============================================================================
@@ -770,7 +716,7 @@
 	const $isotopeContainer = $(".isotope-items-wrap");
 	const isoTransitionDuration = "0.5s";
 
-	$isotopeContainer.imagesLoaded(function() {
+	$isotopeContainer.imagesLoaded(function () {
 		$isotopeContainer.isotope({
 			itemSelector: ".isotope-item",
 			layoutMode: "packery",
@@ -794,20 +740,20 @@
 	}
 
 	// Event delegation for filter clicks
-	$(document).on("click", ".ttgr-cat-classic-item a", function(e) {
+	$(document).on("click", ".ttgr-cat-classic-item a", function (e) {
 		e.preventDefault();
 		const filterSelector = $(this).attr("data-filter");
 		applyFilter(filterSelector); // Default behavior (no scroll reset)
 	});
 
-	$(document).on("click", ".ttgr-cat-item a", function(e) {
+	$(document).on("click", ".ttgr-cat-item a", function (e) {
 		e.preventDefault();
 		const filterSelector = $(this).attr("data-filter");
 		applyFilter(filterSelector, true); // Reset scroll position
 	});
 
 	// Active class management
-	$(document).on("click", ".ttgr-cat-list a, .ttgr-cat-classic-list a", function() {
+	$(document).on("click", ".ttgr-cat-list a, .ttgr-cat-classic-list a", function () {
 		const $this = $(this);
 		if (!$this.hasClass("active")) {
 			$(".ttgr-cat-list a, .ttgr-cat-classic-list a").removeClass("active");
@@ -826,7 +772,7 @@
 	if ($("#portfolio-grid").hasClass("pgi-cap-inside")) {
 
 		// Move "pgi-caption" to inside "pgi-image-wrap".
-		$(".portfolio-grid-item").each(function() {
+		$(".portfolio-grid-item").each(function () {
 			$(this).find(".pgi-caption").appendTo($(this).find(".pgi-image-wrap"));
 		});
 
@@ -839,12 +785,12 @@
 
 	// Play video on hover
 	// ====================
-	$(".pgi-image-wrap").on("mouseenter touchstart", function() {
-		$(this).find("video").each(function() {
+	$(".pgi-image-wrap").on("mouseenter touchstart", function () {
+		$(this).find("video").each(function () {
 			$(this).get(0).play();
-		}); 
-	}).on("mouseleave touchend", function() {
-		$(this).find("video").each(function() {
+		});
+	}).on("mouseleave touchend", function () {
+		$(this).find("video").each(function () {
 			$(this).get(0).pause();
 		});
 	});
@@ -854,7 +800,7 @@
 	// =================================
 
 	// On category trigger click.
-	$(".ttgr-cat-trigger").on("click", function() {
+	$(".ttgr-cat-trigger").on("click", function () {
 		$("body").addClass("ttgr-cat-nav-open");
 		if ($("body").hasClass("ttgr-cat-nav-open")) {
 
@@ -867,9 +813,9 @@
 			// Catecories step in animations.
 			let tl_ttgrIn = gsap.timeline({
 				// Wait until the timeline is completed then make "ttgr-cat-nav" clickable again.
-				onComplete: function() {  
+				onComplete: function () {
 					ttCatNavClose();
-					
+
 					// Disable page scroll if open
 					if ($("body").hasClass("creativesoul-smooth-scroll") && !tt_isMobile) {
 						lenis.stop();
@@ -880,12 +826,12 @@
 			});
 			tl_ttgrIn.to(".ttgr-cat-nav", { duration: 0.3, autoAlpha: 1 });
 			tl_ttgrIn.from(".ttgr-cat-close-btn", { duration: 0.3, y: 10, autoAlpha: 0, ease: Power2.easeIn });
-			tl_ttgrIn.from(".ttgr-cat-list > li", { duration: 0.3, y: 40, autoAlpha: 0, stagger: 0.07, ease: Power2.easeOut, clearProps:"all" }, "-=0.2");
+			tl_ttgrIn.from(".ttgr-cat-list > li", { duration: 0.3, y: 40, autoAlpha: 0, stagger: 0.07, ease: Power2.easeOut, clearProps: "all" }, "-=0.2");
 
 			// On catecory link hover
-			$(".ttgr-cat-list").on("mouseenter", function() {
+			$(".ttgr-cat-list").on("mouseenter", function () {
 				$(this).parents(".ttgr-cat-nav").addClass("ttgr-cat-nav-hover");
-			}).on("mouseleave", function() {
+			}).on("mouseleave", function () {
 				$(this).parents(".ttgr-cat-nav").removeClass("ttgr-cat-nav-hover");
 			});
 
@@ -899,17 +845,17 @@
 		// Close nav when clicking outside the ".ttgr-cat-list"
 		$(".ttgr-cat-nav, .ttgr-cat-close-btn").on("click", function (e) {
 			if ($("body").hasClass("ttgr-cat-nav-open") && !$ttgrCatNavList.is(e.target) && $ttgrCatNavList.has(e.target).length === 0) {
-				
+
 				$("body").removeClass("ttgr-cat-nav-open");
 
 				// Catecories step out animations
 				let tl_ttgrClose = gsap.timeline();
-					tl_ttgrClose.to(".ttgr-cat-close-btn", { duration: 0.3, y: -10, autoAlpha: 0, ease: Power2.easeIn });
-					tl_ttgrClose.to(".ttgr-cat-list > li", { duration: 0.3, y: -40, autoAlpha: 0, stagger: 0.07, ease: Power2.easeIn }, "-=0.3");
-					tl_ttgrClose.to(".ttgr-cat-nav", { duration: 0.3, autoAlpha: 0, clearProps:"all" }, "+=0.2");
-					tl_ttgrClose.to(".portfolio-grid-item", { duration: 0.3, scale: 1, clearProps:"all" }, "-=0.4");
-					tl_ttgrClose.to("#page-header, #creativesoul-header, .ttgr-cat-trigger", { duration: 0.3, autoAlpha: 1, clearProps:"all" }, "-=0.4");
-					tl_ttgrClose.to(".ttgr-cat-list > li, .ttgr-cat-close-btn", { clearProps:"all" }); // clearProps only
+				tl_ttgrClose.to(".ttgr-cat-close-btn", { duration: 0.3, y: -10, autoAlpha: 0, ease: Power2.easeIn });
+				tl_ttgrClose.to(".ttgr-cat-list > li", { duration: 0.3, y: -40, autoAlpha: 0, stagger: 0.07, ease: Power2.easeIn }, "-=0.3");
+				tl_ttgrClose.to(".ttgr-cat-nav", { duration: 0.3, autoAlpha: 0, clearProps: "all" }, "+=0.2");
+				tl_ttgrClose.to(".portfolio-grid-item", { duration: 0.3, scale: 1, clearProps: "all" }, "-=0.4");
+				tl_ttgrClose.to("#page-header, #creativesoul-header, .ttgr-cat-trigger", { duration: 0.3, autoAlpha: 1, clearProps: "all" }, "-=0.4");
+				tl_ttgrClose.to(".ttgr-cat-list > li, .ttgr-cat-close-btn", { clearProps: "all" }); // clearProps only
 
 				// Enable page scroll if closed
 				if ($("body").hasClass("creativesoul-smooth-scroll") && !tt_isMobile) {
@@ -933,12 +879,12 @@
 
 	// Play video on hover
 	// ====================
-	$(".pcli-item").on("mouseenter touchstart", function() {
-		$(this).find("video").each(function() {
+	$(".pcli-item").on("mouseenter touchstart", function () {
+		$(this).find("video").each(function () {
 			$(this).get(0).play();
-		}); 
-	}).on("mouseleave touchend", function() {
-		$(this).find("video").each(function() {
+		});
+	}).on("mouseleave touchend", function () {
+		$(this).find("video").each(function () {
 			$(this).get(0).pause();
 		});
 	});
@@ -962,7 +908,7 @@
 
 		// Function to enable mouse follow
 		function ttEnableMouseFollow() {
-		   // Mouse follow
+			// Mouse follow
 			let $ppliPreview = $(".creativesoul-ppli-preview");
 			let $pplipDuration = 1;
 			let $pplipEase = "power3.out";
@@ -996,12 +942,12 @@
 
 		// Play video on hover
 		// ====================
-		$(".creativesoul-ppl-item").on("mouseenter touchstart", function() {
-			$(this).find("video").each(function() {
+		$(".creativesoul-ppl-item").on("mouseenter touchstart", function () {
+			$(this).find("video").each(function () {
 				$(this).get(0).play();
-			}); 
-		}).on("mouseleave touchend", function() {
-			$(this).find("video").each(function() {
+			});
+		}).on("mouseleave touchend", function () {
+			$(this).find("video").each(function () {
 				$(this).get(0).pause();
 			});
 		});
@@ -1012,9 +958,9 @@
 	// Portfolio sticky
 	// ================================================================
 
-	$(".creativesoul-sticky-portfolio").each(function() {
-		let $ttStPortfItem =  $(this).find(".creativesoul-stp-item");
-		$ttStPortfItem.each(function(index) {
+	$(".creativesoul-sticky-portfolio").each(function () {
+		let $ttStPortfItem = $(this).find(".creativesoul-stp-item");
+		$ttStPortfItem.each(function (index) {
 			let $this = $(this);
 
 			// Add z-index to each item
@@ -1062,12 +1008,12 @@
 
 	// Play video on hover
 	// ====================
-	$(".creativesoul-stp-item").on("mouseenter touchstart", function() {
-		$(this).find("video").each(function() {
+	$(".creativesoul-stp-item").on("mouseenter touchstart", function () {
+		$(this).find("video").each(function () {
 			$(this).get(0).play();
-		}); 
-	}).on("mouseleave touchend", function() {
-		$(this).find("video").each(function() {
+		});
+	}).on("mouseleave touchend", function () {
+		$(this).find("video").each(function () {
 			$(this).get(0).pause();
 		});
 	});
@@ -1081,7 +1027,7 @@
 
 	var $ttPortfolioSlider = $(".creativesoul-portfolio-slider");
 
-	if ($ttPortfolioSlider.length) { 
+	if ($ttPortfolioSlider.length) {
 		$("body").addClass("creativesoul-portfolio-slider-on");
 
 		// Add class to the <body> if vertical direction is enabled
@@ -1159,7 +1105,7 @@
 					const $slideActive = $($this.slides[$this.activeIndex]);
 
 					// Play video on page load if first slide contains video
-					$slideActive.find("video").each(function() {
+					$slideActive.find("video").each(function () {
 						const ttPoslVideo = $(this).get(0);
 						ttPoslVideo.addEventListener("loadeddata", function () {
 							ttPoslVideo.play();
@@ -1172,7 +1118,7 @@
 					const $slideActive = $($this.slides[$this.activeIndex]);
 
 					// Ensure video plays only after it's loaded
-					$slideActive.find("video").each(function() {
+					$slideActive.find("video").each(function () {
 						const ttPoslVideo = $(this).get(0);
 						if (ttPoslVideo.readyState >= 3) { // Video is already loaded
 							ttPoslVideo.play();
@@ -1184,7 +1130,7 @@
 					});
 
 					// If slider image is light
-					setTimeout(function(){
+					setTimeout(function () {
 						if ($slideActive.hasClass("creativesoul-posl-bg-is-light")) {
 							$("body").addClass("creativesoul-posl-light-bg-on");
 						} else {
@@ -1198,10 +1144,10 @@
 					const $slideActive = $($this.slides[$this.activeIndex]);
 
 					// Pause videos only in previous and next slides
-					$slideActive.prevAll().find("video").each(function() {
+					$slideActive.prevAll().find("video").each(function () {
 						this.pause();
 					});
-					$slideActive.nextAll().find("video").each(function() {
+					$slideActive.nextAll().find("video").each(function () {
 						this.pause();
 					});
 				},
@@ -1238,7 +1184,7 @@
 			ease: "none",
 			scrollTrigger: {
 				trigger: $this[0],
-				pin: $ttShsPinWrap[0], 
+				pin: $ttShsPinWrap[0],
 				start: "50% 50%",
 				end: `+=${$ttShsScrollDuration}`, // Use the value from the data attribute
 				scrub: 1,
@@ -1254,7 +1200,7 @@
 				}
 			}
 		});
-	}); 
+	});
 
 
 
@@ -1271,7 +1217,7 @@
 			$ttStickerTriggers.forEach(trigger => trigger.kill());
 			$ttStickerTriggers = [];
 
-			$(".creativesoul-sticky-element").each(function() { 
+			$(".creativesoul-sticky-element").each(function () {
 				const $ttPinElement = $(this);
 				const $ttPinSection = $ttPinElement.closest(".creativesoul-sticker");
 				const $ttPinScroller = $ttPinSection.find(".creativesoul-sticker-scroller");
@@ -1306,8 +1252,8 @@
 	$ttStickerFunction();
 
 	// Run on window resize
-	$(window).on("resize orientationchange", function() {
-		setTimeout(function(){ 
+	$(window).on("resize orientationchange", function () {
+		setTimeout(function () {
 			$ttStickerFunction();
 		}, 300);
 	});
@@ -1318,10 +1264,10 @@
 	// Sticky testimonials 
 	// =======================================================================================
 
-	$(".creativesoul-sticky-testimonials").each(function() {
-		let $ttStteItem =  $(this).find(".creativesoul-stte-item");
+	$(".creativesoul-sticky-testimonials").each(function () {
+		let $ttStteItem = $(this).find(".creativesoul-stte-item");
 
-		$ttStteItem.each(function(index) {
+		$ttStteItem.each(function (index) {
 			let $this = $(this);
 
 			// Set elements to equal heights (based on the tallest element).
@@ -1387,12 +1333,12 @@
 	// ================================================================
 
 	// Play video on hover
-	$(".creativesoul-gallery-video-wrap").on("mouseenter touchstart", function() {
-		$(this).find("video").each(function() {
+	$(".creativesoul-gallery-video-wrap").on("mouseenter touchstart", function () {
+		$(this).find("video").each(function () {
 			$(this).get(0).play();
-		}); 
-	}).on("mouseleave touchend", function() {
-		$(this).find("video").each(function() {
+		});
+	}).on("mouseleave touchend", function () {
+		$(this).find("video").each(function () {
 			$(this).get(0).pause();
 		});
 	});
@@ -1404,8 +1350,8 @@
 	// Source: https://swiperjs.com/
 	// =======================================================================================
 
-	if ($(".creativesoul-content-slider").length) { 
-		$(".creativesoul-content-slider").each(function() {
+	if ($(".creativesoul-content-slider").length) {
+		$(".creativesoul-content-slider").each(function () {
 			var $ttContentSlider = $(this);
 
 			// Data attributes
@@ -1469,8 +1415,8 @@
 	// Source: https://swiperjs.com/
 	// =======================================================================================
 
-	if ($(".creativesoul-content-carousel").length) { 
-		$(".creativesoul-content-carousel").each(function() {
+	if ($(".creativesoul-content-carousel").length) {
+		$(".creativesoul-content-carousel").each(function () {
 			var $ttContentCarousel = $(this);
 
 			// Data attributes
@@ -1541,12 +1487,12 @@
 			// =======================================
 			if ($ttContentCarousel.attr("data-simulate-touch") == "true") {
 				if ($ttContentCarousel.hasClass("cc-scale-down")) {
-					$ttContentCarousel.find(".swiper-wrapper").on("mousedown touchstart pointerdown", function(e) {
+					$ttContentCarousel.find(".swiper-wrapper").on("mousedown touchstart pointerdown", function (e) {
 						if (e.which === 1) { // Affects the left mouse button only!
 							gsap.to($ttContentCarousel.find(".creativesoul-content-carousel-item"), { duration: 0.7, scale: 0.9 });
 						}
 					});
-					$("body").on("mouseup touchend pointerup mouseleave", function() {	
+					$("body").on("mouseup touchend pointerup mouseleave", function () {
 						gsap.to($ttContentCarousel.find(".creativesoul-content-carousel-item"), { duration: 0.7, scale: 1, clearProps: "scale" });
 					});
 				}
@@ -1574,12 +1520,12 @@
 	// =======================================================================================
 
 	// Play video on hover
-	$(".creativesoul-npi-image").on("mouseenter touchstart", function() {
-		$(this).find("video").each(function() {
+	$(".creativesoul-npi-image").on("mouseenter touchstart", function () {
+		$(this).find("video").each(function () {
 			$(this).get(0).play();
-		}); 
-	}).on("mouseleave touchend", function() {
-		$(this).find("video").each(function() {
+		});
+	}).on("mouseleave touchend", function () {
+		$(this).find("video").each(function () {
 			$(this).get(0).pause();
 		});
 	});
@@ -1598,20 +1544,20 @@
 		buttons: [
 			"close"
 		],
-		onInit: function() {
+		onInit: function () {
 			// Pause lenis
 			if ($("body").hasClass("creativesoul-smooth-scroll")) {
 				$("body").addClass("fancybox-is-open");
-				if(!tt_isMobile) {
+				if (!tt_isMobile) {
 					lenis.stop();
 				}
 			}
 		},
-		afterClose: function() {
+		afterClose: function () {
 			// Start lenis
 			if ($("body").hasClass("creativesoul-smooth-scroll")) {
 				$("body").removeClass("fancybox-is-open");
-				if(!tt_isMobile) {
+				if (!tt_isMobile) {
 					lenis.start();
 				}
 			}
@@ -1624,14 +1570,14 @@
 	// Scrolling text
 	// ================================================================
 
-	$(".creativesoul-scrolling-text").each(function() {
+	$(".creativesoul-scrolling-text").each(function () {
 		let $this = $(this);
 		let $tt_scrtScrollerContent = $this.find(".creativesoul-scrt-content");
 
 		// Clone content.
 		// ===============
 		let $tt_scrtClone = 5; // How many times to clone an item
-	  
+
 		for (let i = 0; i < $tt_scrtClone; i++) {
 			let $tt_scrtClonedItem = $tt_scrtScrollerContent.clone();
 			$tt_scrtClonedItem.attr("aria-hidden", true);
@@ -1645,25 +1591,25 @@
 		let $tt_scrtAtrSpeed = $this.data("scroll-speed");
 		let $tt_scrtAtrOpDirection = $this.data("opposite-direction") == true;
 		let $tt_scrtAtrChangeDirection = $this.data("change-direction") == true;
-	  
+
 		if ($tt_scrtAtrSpeed) {
 			var $tt_scrtSpeed = $tt_scrtAtrSpeed;
 		} else {
 			var $tt_scrtSpeed = 10; // Default value
 		}
-	  
+
 		if ($tt_scrtAtrOpDirection) {
 			var $tt_scrtDirection = 100;
 		} else {
 			var $tt_scrtDirection = -100; // Default value
 		}
-	  
+
 		let $tt_scrtTween = gsap.to($this.find(".creativesoul-scrt-content"), { duration: $tt_scrtSpeed, xPercent: $tt_scrtDirection, repeat: -1, ease: "linear" }).totalProgress(0.5);
 
 		gsap.set(".creativesoul-scrt-inner", { xPercent: -50 });
-	  
+
 		if ($tt_scrtAtrChangeDirection) {
-			window.addEventListener("scroll", function() {
+			window.addEventListener("scroll", function () {
 				if (window.pageYOffset > $tt_scrtCurrentScroll) {
 					$tt_scrtIsScrollingDown = true;
 					$this.removeClass("scrolled-up");
@@ -1688,11 +1634,11 @@
 	// Accordion
 	// ================================================================
 
-	$(".creativesoul-accordion").each(function() {
+	$(".creativesoul-accordion").each(function () {
 		let $ttAccordion = $(this);
 
 		// If accordion content has class "is-open"
-		$ttAccordion.find(".creativesoul-accordion-item").each(function() {
+		$ttAccordion.find(".creativesoul-accordion-item").each(function () {
 			let $ttAccItem = $(this);
 
 			if ($ttAccItem.find(".creativesoul-accordion-content").hasClass("is-open")) {
@@ -1701,7 +1647,7 @@
 		});
 
 		// Accordion item on click
-		$ttAccordion.find(".creativesoul-accordion-heading").on("click", function() {
+		$ttAccordion.find(".creativesoul-accordion-heading").on("click", function () {
 			let $ttAccHeading = $(this);
 			let $ttAccItem = $ttAccHeading.parents(".creativesoul-accordion-item");
 			let $ttAccContent = $ttAccHeading.next(".creativesoul-accordion-content");
@@ -1711,7 +1657,7 @@
 				$ttAccContent.slideUp(350);
 			} else {
 				$ttAccordion.find(".creativesoul-accordion-item.active").removeClass("active")
-				.find(".creativesoul-accordion-content").slideUp(350);
+					.find(".creativesoul-accordion-content").slideUp(350);
 				$ttAccItem.addClass("active");
 				$ttAccContent.slideDown(350);
 			}
@@ -1725,7 +1671,7 @@
 	// Horizontal accordion
 	// ================================================================
 
-	$(".creativesoul-horizontal-accordion").each(function() {
+	$(".creativesoul-horizontal-accordion").each(function () {
 		let $ttHorAccordion = $(this);
 		let $ttHorAccItem = $ttHorAccordion.find('.creativesoul-hac-item');
 		let $ttHorAccFirtItem = $ttHorAccItem.first();
@@ -1734,18 +1680,18 @@
 		let $ttHorAccItemWidth = 100 / $ttHorAccItemCount + '%';
 
 		// Set z-index in reverse order
-		$ttHorAccItem.each(function(index) {
+		$ttHorAccItem.each(function (index) {
 			$(this).css('z-index', $ttHorAccItemCount - index);
 		});
 
 		// Add mouseenter and mouseleave event listeners
-		$ttHorAccNotFirtItem.on('mouseenter', function() {
+		$ttHorAccNotFirtItem.on('mouseenter', function () {
 			if (!$(this).hasClass('active')) {
 				$ttHorAccItem.removeClass('active');
 				$(this).addClass('active');
 				$ttHorAccFirtItem.addClass('inactive');
 			}
-		}).on('mouseleave', function() {
+		}).on('mouseleave', function () {
 			$ttHorAccItem.removeClass('active');
 			$ttHorAccFirtItem.removeClass('inactive');
 		});
@@ -1755,7 +1701,7 @@
 
 		// Calculate title and description width
 		function ttHorAccItemSize() {
-			setTimeout(function() {
+			setTimeout(function () {
 				let $ttHorAccItemContent = $(".creativesoul-haci-title, .creativesoul-haci-description");
 				let $ttHorAccItemInner = $ttHorAccFirtItem.find(".creativesoul-hac-item-inner").width() * 0.84;
 				$ttHorAccItemContent.width($ttHorAccItemInner);
@@ -1773,7 +1719,7 @@
 	// creativesoul-Image
 	// ================================================================
 
-	$(".creativesoul-image").each(function() {
+	$(".creativesoul-image").each(function () {
 		const $this = $(this);
 		const $ttImageLightboxIcon = $this.find(".creativesoul-image-link");
 
@@ -1784,7 +1730,7 @@
 	});
 
 	// Wrap the entire content of <figcaption>
-	$("figcaption").each(function() {
+	$("figcaption").each(function () {
 		$(this).contents().wrapAll('<div class="figcaption-inner"></div>');
 	});
 
@@ -1799,31 +1745,31 @@
 		$(this).data("placeholder", $(this).attr("placeholder")).attr("placeholder", "");
 	}).blur(function () {
 		$(this).attr("placeholder", $(this).data("placeholder"));
-	}); 
+	});
 
 	// If <form> has class "creativesoul-form-creative"
 	if ($("form").hasClass("creativesoul-form-creative")) {
 		// Add class "creativesoul-fg-typing" if typing 
-		$('input:not([type="checkbox"]):not([type="radio"]), textarea, select').on('input', function() {
+		$('input:not([type="checkbox"]):not([type="radio"]), textarea, select').on('input', function () {
 			$(this).parent().toggleClass("creativesoul-fg-typing", this.value.trim().length > 0);
 		});
 	}
-	
+
 	// Form "Browse File" button info
-	$(document).on("change", ":file", function() {
+	$(document).on("change", ":file", function () {
 		var input = $(this),
-		numFiles = input.get(0).files ? input.get(0).files.length : 1,
-		label = input.val().replace(/\\/g, "/").replace(/.*\//, "");
+			numFiles = input.get(0).files ? input.get(0).files.length : 1,
+			label = input.val().replace(/\\/g, "/").replace(/.*\//, "");
 		input.trigger("fileselect", [numFiles, label]);
 	});
-	$(":file").on("fileselect", function(event, numFiles, label) {
+	$(":file").on("fileselect", function (event, numFiles, label) {
 		var input = $(this).parents(".creativesoul-form-file").find(".creativesoul-file-info"),
-		log = numFiles > 1 ? numFiles + " files selected" : label;
+			log = numFiles > 1 ? numFiles + " files selected" : label;
 
-		if( input.length ) {
+		if (input.length) {
 			input.val(log);
 		} else {
-			if( log ) alert(log);
+			if (log) alert(log);
 		}
 	});
 
@@ -1835,7 +1781,7 @@
 
 	let $ttContactForm = $("#creativesoul-contact-form");
 
-	$ttContactForm.submit(function(e) {
+	$ttContactForm.submit(function (e) {
 		e.preventDefault(); // Prevent default form submission.
 
 		let $cfmContainer = $("#creativesoul-contact-form-messages");
@@ -1848,12 +1794,10 @@
 		const formData = $(this).serialize();
 		$.ajax({
 			type: "POST",
-			url: "mail.php", // Path to your PHP script.
+			url: "./c.php", // Path to your PHP script.
 			data: formData,
 			dataType: "json",
-
-		}).done(function(response) {
-
+		}).done(function (response) {
 			// Clear previous messages.
 			$cfmContainerInner.empty();
 
@@ -1861,20 +1805,19 @@
 				$ttContactForm.addClass("cfm-submitted");
 
 				// Display success message.
-				$cfmContainerInner.html('<span class="creativesoul-cfm-success">' + response.message + '</span>'); // Look at the "mail.php" file to change this response message text.
+				$cfmContainerInner.html('<span class="creativesoul-cfm-success">' + response.message + '</span>');
 
 				$ttContactForm.trigger("reset"); // Reset the form.
-				$(".creativesoul-form-group").removeClass("creativesoul-fg-typing"); // Remove class from "creativesoul-form-group" (for "creativesoul-form-creative").
+				$(".creativesoul-form-group").removeClass("creativesoul-fg-typing");
 			} else {
 				$ttContactForm.addClass("cfm-submitted");
 
 				// Display error message.
-				$cfmContainerInner.html('<span class="creativesoul-cfm-error">' + response.message + '</span>'); // Look at the "mail.php" file to change this response message text.
+				$cfmContainerInner.html('<span class="creativesoul-cfm-error">' + response.message + '</span>');
 			}
 
 			scrollToContactFormTop(); // Scroll to the form top.
-
-		}).fail(function() {
+		}).fail(function () {
 			$ttContactForm.addClass("cfm-submitted");
 
 			// Clear previous messages and display AJAX error message.
@@ -1885,12 +1828,12 @@
 
 		// Scroll to the form top function.
 		function scrollToContactFormTop() {
-			if(!tt_isMobile) { // Not for mobile devices!
+			if (!tt_isMobile) {
 				if ($("body").hasClass("creativesoul-smooth-scroll")) {
 					const cfmTopY = $ttContactForm.offset().top - $("body").offset().top - 240;
-					lenis.scrollTo(cfmTopY, { 
-						duration: 1, 
-						easing: (x) => Math.min(x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2) 
+					lenis.scrollTo(cfmTopY, {
+						duration: 1,
+						easing: (x) => Math.min(x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2)
 					});
 				} else {
 					$("html, body").animate({ scrollTop: $ttContactForm.offset().top - 240 }, 600);
@@ -1901,14 +1844,14 @@
 		}
 
 		// Message close button click.
-		$(document).on("click", ".creativesoul-cfm-close", function() {
+		$(document).on("click", ".creativesoul-cfm-close", function () {
 			if ($cfmContainerInner.find("span").length) {
 				$cfmContainerInner.find("span").remove();
 				$ttContactForm.removeClass("cfm-submitted");
 			}
 		});
-
 	});
+
 
 
 
@@ -1919,41 +1862,41 @@
 	$('a[href^="#"]')
 		.not('[href$="#"]') // omit from selection
 		.not('[href$="#0"]') // omit from selection
-		.on("click", function(e) {
+		.on("click", function (e) {
 
-		let $tt_sbaHeader = $("#creativesoul-header");
-		let $tt_sbaTarget = this.hash;
+			let $tt_sbaHeader = $("#creativesoul-header");
+			let $tt_sbaTarget = this.hash;
 
-		// If fixed header position enabled.
-		if ($tt_sbaHeader.hasClass("creativesoul-header-fixed")) {
-			var $tt_sbaOffset = $tt_sbaHeader.height();
-		} else {
-			var $tt_sbaOffset = 0;
-		}
-
-		// You can use data attribute (for example: data-offset="100") to set top offset in HTML markup if needed. 
-		if ($(this).data("offset") != undefined) $tt_sbaOffset = $(this).data("offset");
-		
-		let $tt_sbaTopY = $($tt_sbaTarget).offset().top - $("body").offset().top - $tt_sbaOffset;
-		if ($("body").hasClass("creativesoul-smooth-scroll")) {
-			if(!tt_isMobile) {
-				lenis.scrollTo($tt_sbaTopY, { 
-					duration: 1, 
-					easing: (x) => Math.min(x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2) 
-				});
+			// If fixed header position enabled.
+			if ($tt_sbaHeader.hasClass("creativesoul-header-fixed")) {
+				var $tt_sbaOffset = $tt_sbaHeader.height();
 			} else {
-				$("html,body").animate({scrollTop: $tt_sbaTopY}, 800);
+				var $tt_sbaOffset = 0;
 			}
-		} else {
-			$("html,body").animate({scrollTop: $tt_sbaTopY}, 800);
-		}
 
-		// If scroll down circle 
-		if ($(this).hasClass("creativesoul-scroll-down-inner")) {
-         e.preventDefault();
-		}
+			// You can use data attribute (for example: data-offset="100") to set top offset in HTML markup if needed. 
+			if ($(this).data("offset") != undefined) $tt_sbaOffset = $(this).data("offset");
 
-	});
+			let $tt_sbaTopY = $($tt_sbaTarget).offset().top - $("body").offset().top - $tt_sbaOffset;
+			if ($("body").hasClass("creativesoul-smooth-scroll")) {
+				if (!tt_isMobile) {
+					lenis.scrollTo($tt_sbaTopY, {
+						duration: 1,
+						easing: (x) => Math.min(x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2)
+					});
+				} else {
+					$("html,body").animate({ scrollTop: $tt_sbaTopY }, 800);
+				}
+			} else {
+				$("html,body").animate({ scrollTop: $tt_sbaTopY }, 800);
+			}
+
+			// If scroll down circle 
+			if ($(this).hasClass("creativesoul-scroll-down-inner")) {
+				e.preventDefault();
+			}
+
+		});
 
 
 
@@ -1966,7 +1909,7 @@
 		var $tt_SttOffset = 150;
 
 		// Show/hide button
-		$(window).on('scroll', function() {
+		$(window).on('scroll', function () {
 			if ($(window).scrollTop() > $tt_SttOffset) {
 				$tt_ScrollToTop.addClass("creativesoul-screativesoul-active");
 			} else {
@@ -1975,12 +1918,12 @@
 		});
 
 		// Scroll to top on click
-		$tt_ScrollToTop.on("click", function(e) {
+		$tt_ScrollToTop.on("click", function (e) {
 			if ($("body").hasClass("creativesoul-smooth-scroll")) {
-				if(!tt_isMobile) {
-					lenis.scrollTo(0, { 
-						duration: 1, 
-						easing: (x) => Math.min(x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2) 
+				if (!tt_isMobile) {
+					lenis.scrollTo(0, {
+						duration: 1,
+						easing: (x) => Math.min(x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2)
 					});
 				} else {
 					$("html,body").animate({ scrollTop: 0 }, 800);
@@ -2000,7 +1943,7 @@
 		$tt_SttProgressPath.style.strokeDashoffset = $tt_SttPathLength;
 		$tt_SttProgressPath.style.transition = $tt_SttProgressPath.style.WebkitTransition = "stroke-dashoffset 10ms linear";
 
-		$(window).on("scroll", function() {
+		$(window).on("scroll", function () {
 			var $tt_SttScroll = $(window).scrollTop();
 			var $tt_SttHeight = $(document).height() - $(window).height();
 			var $tt_SttProgress = $tt_SttPathLength - ($tt_SttScroll * $tt_SttPathLength / $tt_SttHeight);
@@ -2028,7 +1971,7 @@
 
 		// Set CSS styles
 		$aipWrap.css({ "overflow": "hidden" });
-		$aipInner.css({"transform": "scale(1.2)", "transform-origin": "50% 100%", "will-change": "transform" });
+		$aipInner.css({ "transform": "scale(1.2)", "transform-origin": "50% 100%", "will-change": "transform" });
 
 		// Initialize animations
 		function tt_animImageParallax() {
@@ -2042,7 +1985,7 @@
 					markers: false,
 				},
 			});
-			tl_ImageParallax.to($aipInner, { yPercent: 25, ease: "none" }); 
+			tl_ImageParallax.to($aipInner, { yPercent: 25, ease: "none" });
 		}
 
 		// Wait for the image to load
@@ -2059,7 +2002,7 @@
 
 	// Image zoom-in on scroll
 	// ========================
-	$(".creativesoul-anim-zoomin").each(function() {
+	$(".creativesoul-anim-zoomin").each(function () {
 
 		// Add wrap <div>.
 		$(this).wrap('<div class="creativesoul-anim-zoomin-wrap"></div>');
@@ -2077,13 +2020,13 @@
 				markers: false,
 			}
 		});
-		tl_ZoomIn.from($this, { duration: 1.5, autoAlpha: 0, scale: 1.3, ease: Power2.easeOut, clearProps:"all" });
+		tl_ZoomIn.from($this, { duration: 1.5, autoAlpha: 0, scale: 1.3, ease: Power2.easeOut, clearProps: "all" });
 	});
 
 
 	// Element reveal on scroll (fade in-up)
 	// ======================================
-	$(".creativesoul-anim-fadeinup").each(function() {
+	$(".creativesoul-anim-fadeinup").each(function () {
 		let $this = $(this);
 		let tl_FadeInUp = gsap.timeline({
 			scrollTrigger: {
@@ -2103,7 +2046,7 @@
 
 	// Text horizontal reveal on scroll
 	// =================================
-	$(".creativesoul-text-reveal").each(function() {
+	$(".creativesoul-text-reveal").each(function () {
 		$(this).wrapInner("<span/>");
 	});
 
@@ -2111,7 +2054,7 @@
 	let ttTextRevealElements = gsap.utils.toArray(".creativesoul-text-reveal");
 
 	// Apply GSAP animations
-	ttTextRevealElements.forEach(function(ttTextReveal) {
+	ttTextRevealElements.forEach(function (ttTextReveal) {
 		let ttTextRevealSpans = ttTextReveal.querySelectorAll("span");
 
 		let tl_ttTextRevealAnim = gsap.timeline({
@@ -2129,7 +2072,7 @@
 
 	// creativesoul-Clipper
 	// ===========
-	$(".creativesoul-clipper").each(function() {
+	$(".creativesoul-clipper").each(function () {
 		const $this = $(this);
 		const $ttClipperInner = $this.find(".creativesoul-clipper-inner");
 		const $isInWrap = $this.parents(".creativesoul-wrap").length > 0;
@@ -2158,12 +2101,12 @@
 	// Moving images on scroll
 	// ========================
 	function ttMovingImages() {
-		$('.creativesoul-moving-images').each(function(index) {
+		$('.creativesoul-moving-images').each(function (index) {
 			let $this = $(this);
 			let w = $this.find('.creativesoul-mi-list');
 			let x, xEnd;
 
-	      // Calculate the initial and end positions based on index parity
+			// Calculate the initial and end positions based on index parity
 			if (index % 2) {
 				x = $this.width() - w.get(0).scrollWidth;
 				xEnd = 0;
@@ -2187,7 +2130,7 @@
 			// Animate the element from x to xEnd
 			tl_miSt.fromTo(w, { x: x }, { x: xEnd });
 
-	      // Refresh on enter
+			// Refresh on enter
 			function tt_miStRefresh() {
 				tl_miSt.scrollTrigger.refresh();
 			}
@@ -2198,7 +2141,7 @@
 	ttMovingImages();
 
 	// Call function on window resize or orientation change
-	$(window).on('resize orientationchange', function() {
+	$(window).on('resize orientationchange', function () {
 		ttMovingImages();
 	});
 
@@ -2212,7 +2155,7 @@
 				".creativesoul-grid.ttgr-layout-creative-1 .creativesoul-grid-item:nth-of-type(6n+4) .ttgr-item-inner",
 				".creativesoul-grid.ttgr-layout-creative-2 .creativesoul-grid-item:nth-of-type(4n+2) .ttgr-item-inner",
 				".creativesoul-grid.ttgr-layout-creative-2 .creativesoul-grid-item:not(:last-child):nth-of-type(4n+3) .ttgr-item-inner",
-				];
+			];
 
 			$($ttgrSelectors.join(", ")).each(function () {
 				const $this = $(this);
@@ -2231,12 +2174,12 @@
 			});
 		},
 	});
-		
+
 
 	// creativesoul-Grid categories filter show/hide on scroll
 	// ==============================================
 	if ($(".creativesoul-grid-categories").length) {
-		
+
 		let $ttgCatTriggerWrap = $(".ttgr-cat-trigger-wrap");
 		let $ttgCatTriggerHolder = $(".ttgr-cat-trigger-holder");
 
@@ -2258,12 +2201,12 @@
 			});
 
 			function ttgCatShow() {
-				tl_ttgrCatFilter.to($ttgCatTriggerHolder, { duration: 0.4, autoAlpha: 1, scale: 1, ease:Power2.easeOut });
+				tl_ttgrCatFilter.to($ttgCatTriggerHolder, { duration: 0.4, autoAlpha: 1, scale: 1, ease: Power2.easeOut });
 			}
 			function ttgCatHide() {
-				tl_ttgrCatFilter.to($ttgCatTriggerHolder, { duration: 0.4, autoAlpha: 0, scale: 0.9, ease:Power2.easeOut });
+				tl_ttgrCatFilter.to($ttgCatTriggerHolder, { duration: 0.4, autoAlpha: 0, scale: 0.9, ease: Power2.easeOut });
 			}
-		} 
+		}
 	}
 
 
@@ -2274,15 +2217,15 @@
 	// =======================================================================================
 
 	// HTML video lazy loading 
-	$(function() {
+	$(function () {
 		if ($("video source").attr("data-src")) {
 			var lazyVideos = $("video").toArray();
 
 			if ("IntersectionObserver" in window) {
-				var lazyVideoObserver = new IntersectionObserver(function(entries, observer) {
-					entries.forEach(function(entry) {
+				var lazyVideoObserver = new IntersectionObserver(function (entries, observer) {
+					entries.forEach(function (entry) {
 						if (entry.isIntersecting) {
-							$(entry.target).find("source").each(function() {
+							$(entry.target).find("source").each(function () {
 								$(this).attr("src", $(this).data("src")).removeAttr("data-src");
 							});
 
@@ -2292,7 +2235,7 @@
 					});
 				});
 
-				lazyVideos.forEach(function(video) {
+				lazyVideos.forEach(function (video) {
 					lazyVideoObserver.observe(video);
 				});
 			}
@@ -2344,11 +2287,11 @@
 			let $ballCloseHeight = 100; // Ball close height
 
 			gsap.set($ball, {  // scale from middle and style ball
-				xPercent: -50, 
-				yPercent: -50, 
+				xPercent: -50,
+				yPercent: -50,
 				width: $ballWidth,
 				height: $ballHeight,
-				borderWidth: $ballBorderWidth, 
+				borderWidth: $ballBorderWidth,
 				opacity: $ballOpacity,
 			});
 
@@ -2370,7 +2313,7 @@
 				}
 			}
 
-			$(".magnetic-wrap").mousemove(function(e) {
+			$(".magnetic-wrap").mousemove(function (e) {
 				parallaxCursor(e, this, 2); // magnetic ball = low number is more attractive
 				callParallax(e, this);
 			});
@@ -2385,7 +2328,7 @@
 				let relY = e.clientY - boundingRect.top;
 
 				gsap.to(target, {
-					duration: 0.3, 
+					duration: 0.3,
 					x: ((relX - boundingRect.width / 2) / boundingRect.width) * movement,
 					y: ((relY - boundingRect.height / 2) / boundingRect.height) * movement,
 					ease: Power2.easeOut
@@ -2396,10 +2339,10 @@
 				let rect = parent.getBoundingClientRect();
 				let relX = e.clientX - rect.left;
 				let relY = e.clientY - rect.top;
-				
+
 				$ballPos.x = rect.left + rect.width / 2 + (relX - rect.width / 2) / movement;
 				$ballPos.y = rect.top + rect.height / 2 + (relY - rect.height / 2) / movement;
-				gsap.to($ball, {duration: 0.3, x: $ballPos.x, y: $ballPos.y });
+				gsap.to($ball, { duration: 0.3, x: $ballPos.x, y: $ballPos.y });
 			}
 
 
@@ -2407,49 +2350,49 @@
 			// ======================
 
 			// Magnetic item hover.
-			$(".magnetic-wrap").on("mouseenter", function(e) {
+			$(".magnetic-wrap").on("mouseenter", function (e) {
 				$ball.addClass("magnetic-active");
 				gsap.to($ball, { duration: 0.3, width: $ballMagneticWidth, height: $ballMagneticHeight, opacity: 1 });
 				$ballActive = true;
-			}).on("mouseleave", function(e) {
+			}).on("mouseleave", function (e) {
 				$ball.removeClass("magnetic-active");
 				gsap.to($ball, { duration: 0.3, width: $ballWidth, height: $ballHeight, opacity: $ballOpacity });
-				gsap.to(this.querySelector(".creativesoul-magnetic-item"), { duration: 0.3, x: 0, y: 0, clearProps:"all" });
+				gsap.to(this.querySelector(".creativesoul-magnetic-item"), { duration: 0.3, x: 0, y: 0, clearProps: "all" });
 				$ballActive = false;
 			});
 
 			// Alternative cursor style on hover.
 			$(".cursor-alter, .creativesoul-main-menu-list > li > a, .creativesoul-main-menu-list > li > .creativesoul-submenu-trigger > a")
-			.not(".creativesoul-magnetic-item") // omit from selection.
-			.on("mouseover", function() {
-				gsap.to($ball, {
-					duration: 0.3, 
-					borderWidth: 0, 
-					opacity: 0.2, 
-					backgroundColor: "#999", 
-					width: $ballAlterWidth, 
-					height: $ballAlterHeight, 
+				.not(".creativesoul-magnetic-item") // omit from selection.
+				.on("mouseover", function () {
+					gsap.to($ball, {
+						duration: 0.3,
+						borderWidth: 0,
+						opacity: 0.2,
+						backgroundColor: "#999",
+						width: $ballAlterWidth,
+						height: $ballAlterHeight,
+					});
+				}).on("mouseleave", function () {
+					gsap.to($ball, {
+						duration: 0.3,
+						borderWidth: $ballBorderWidth,
+						opacity: $ballOpacity,
+						backgroundColor: "transparent",
+						width: $ballWidth,
+						height: $ballHeight,
+						clearProps: "backgroundColor"
+					});
 				});
-			}).on("mouseleave", function() {
-				gsap.to($ball, {
-					duration: 0.3, 
-					borderWidth: $ballBorderWidth, 
-					opacity: $ballOpacity, 
-					backgroundColor: "transparent", 
-					width: $ballWidth, 
-					height: $ballHeight, 
-					clearProps:"backgroundColor" 
-				});
-			});
 
 			// Cursor view on hover (data attribute data-cursor="...").
-			$("[data-cursor]").each(function() {
-				$(this).on("mouseenter", function() {
+			$("[data-cursor]").each(function () {
+				$(this).on("mouseenter", function () {
 					$ball.addClass("ball-view").append('<div class="ball-view-inner"></div>');
 					$(".ball-view-inner").append($(this).attr("data-cursor"));
 					gsap.to($ball, { duration: 0.3, yPercent: -70, width: $ballViewWidth, height: $ballViewHeight, opacity: 1, borderWidth: 0 });
 					gsap.to(".ball-view-inner", { duration: 0.3, scale: 1, autoAlpha: 1 });
-				}).on("mouseleave", function() {
+				}).on("mouseleave", function () {
 					gsap.to($ball, { duration: 0.3, yPercent: -50, width: $ballWidth, height: $ballHeight, opacity: $ballOpacity, borderWidth: $ballBorderWidth });
 					$ball.removeClass("ball-view").find(".ball-view-inner").remove();
 				});
@@ -2457,13 +2400,13 @@
 			});
 
 			// Cursor drag on hover (class "cursor-drag"). For Swiper.
-			$(".swiper").each(function() {
+			$(".swiper").each(function () {
 				if ($(this).parent().attr("data-simulate-touch") == "true") {
 					if ($(this).parent().hasClass("cursor-drag")) {
-						$(this).find(".swiper-wrapper").on("mouseenter", function() {
+						$(this).find(".swiper-wrapper").on("mouseenter", function () {
 							$ball.addClass("ball-drag").append('<div class="ball-drag-inner"></div>');
 							gsap.to($ball, { duration: 0.3, yPercent: -75, width: $ballDragWidth, height: $ballDragHeight, opacity: 1 });
-						}).on("mouseleave", function() {
+						}).on("mouseleave", function () {
 							$ball.removeClass("ball-drag").find(".ball-drag-inner").remove();
 							gsap.to($ball, { duration: 0.3, yPercent: -50, width: $ballWidth, height: $ballHeight, opacity: $ballOpacity });
 						});
@@ -2473,32 +2416,32 @@
 			});
 
 			// Cursor drag on mouse down / click and hold effect (class "cursor-drag-mouse-down"). For Swiper.
-			$(".swiper").each(function() {
+			$(".swiper").each(function () {
 				if ($(this).parent().attr("data-simulate-touch") == "true") {
 					if ($(this).parent().hasClass("cursor-drag-mouse-down")) {
-						$(this).on("mousedown pointerdown", function(e) {
+						$(this).on("mousedown pointerdown", function (e) {
 							if (e.which === 1) { // Affects the left mouse button only!
 								gsap.to($ball, { duration: 0.3, yPercent: -50, width: $ballDragMouseDownWidth, height: $ballDragMouseDownHeight, opacity: 1 });
 								$ball.addClass("ball-drag-mouse-down").append('<div class="ball-drag-mouse-down-inner"></div>');
 							}
-						}).on("mouseup pointerup", function() {
+						}).on("mouseup pointerup", function () {
 							$ball.removeClass("ball-drag-mouse-down").find(".ball-drag-mouse-down-inner").remove();
 							if ($(this).find("[data-cursor]:hover").length) {
 							} else {
 								gsap.to($ball, { duration: 0.3, yPercent: -50, width: $ballWidth, height: $ballHeight, opacity: $ballOpacity });
 							}
-						}).on("mouseleave", function() {
+						}).on("mouseleave", function () {
 							$ball.removeClass("ball-drag-mouse-down").find(".ball-drag-mouse-down-inner").remove();
 							gsap.to($ball, { duration: 0.3, yPercent: -50, width: $ballWidth, height: $ballHeight, opacity: $ballOpacity });
 						});
 
 						// Ignore "data-cursor" on mousedown.
-						$(this).find("[data-cursor]").on("mousedown pointerdown", function() {
+						$(this).find("[data-cursor]").on("mousedown pointerdown", function () {
 							return false;
 						});
 
 						// Ignore "data-cursor" on hover.
-						$(this).find("[data-cursor]").on("mouseover", function() {
+						$(this).find("[data-cursor]").on("mouseover", function () {
 							$ball.removeClass("ball-drag-mouse-down").find(".ball-drag-mouse-down-inner").remove();
 							return false;
 						});
@@ -2507,19 +2450,19 @@
 			});
 
 			// Cursor arrow left on hover (class "cursor-arrow-left"). For Swiper.
-			$(".cursor-arrow-left").on("mouseenter", function() {
+			$(".cursor-arrow-left").on("mouseenter", function () {
 				$ball.addClass("ball-arrow").append('<div class="ball-arrow-left"></div>');
 				gsap.to($ball, { duration: 0.3, yPercent: -70, width: $ballArrowWidth, height: $ballArrowHeight, opacity: 1 });
-			}).on("mouseleave", function() {
+			}).on("mouseleave", function () {
 				$ball.removeClass("ball-arrow").find(".ball-arrow-left").remove();
 				gsap.to($ball, { duration: 0.3, yPercent: -50, width: $ballWidth, height: $ballHeight, opacity: $ballOpacity });
 			});
 
 			// Cursor arrow right on hover (class "cursor-arrow-right"). For Swiper.
-			$(".cursor-arrow-right").on("mouseenter", function() {
+			$(".cursor-arrow-right").on("mouseenter", function () {
 				$ball.addClass("ball-arrow").append('<div class="ball-arrow-right"></div>');
 				gsap.to($ball, { duration: 0.3, yPercent: -70, width: $ballArrowWidth, height: $ballArrowHeight, opacity: 1 });
-			}).on("mouseleave", function() {
+			}).on("mouseleave", function () {
 				$ball.removeClass("ball-arrow").find(".ball-arrow-right").remove();
 				gsap.to($ball, { duration: 0.3, yPercent: -50, width: $ballWidth, height: $ballHeight, opacity: $ballOpacity });
 			});
@@ -2572,19 +2515,19 @@
 
 			// Hide on hover.
 			$("a, button, .creativesoul-magnetic-btn, .creativesoul-form-control, .creativesoul-form-radio, .creativesoul-form-check, .creativesoul-hide-cursor, .creativesoul-video, iframe, body.ph-mask-on .ph-caption, .creativesoul-cfm-close") // class "hide-cursor" is for global use.
-			.not(".not-hide-cursor") // omit from selection (class "not-hide-cursor" is for global use).
-			.not(".cursor-alter") // omit from selection
-			.not("#page-header:not(.ph-full) .creativesoul-scroll-down-inner") // omit from selection
-			.not(".ph-social > ul > li a") // omit from selection
-			.not(".ph-share-buttons > ul > li a") // omit from selection
-			.not(".creativesoul-social-buttons > ul > li a") // omit from selection
-			.not(".creativesoul-main-menu-list > li > a") // omit from selection
-			.not(".creativesoul-main-menu-list > li > .creativesoul-submenu-trigger > a") // omit from selection
-			.on("mouseenter", function() {
-				gsap.to($ball, { duration: 0.3, scale: 0, opacity: 0 });
-			}).on("mouseleave", function() {
-				gsap.to($ball, { duration: 0.3, scale: 1, opacity: $ballOpacity });
-			});
+				.not(".not-hide-cursor") // omit from selection (class "not-hide-cursor" is for global use).
+				.not(".cursor-alter") // omit from selection
+				.not("#page-header:not(.ph-full) .creativesoul-scroll-down-inner") // omit from selection
+				.not(".ph-social > ul > li a") // omit from selection
+				.not(".ph-share-buttons > ul > li a") // omit from selection
+				.not(".creativesoul-social-buttons > ul > li a") // omit from selection
+				.not(".creativesoul-main-menu-list > li > a") // omit from selection
+				.not(".creativesoul-main-menu-list > li > .creativesoul-submenu-trigger > a") // omit from selection
+				.on("mouseenter", function () {
+					gsap.to($ball, { duration: 0.3, scale: 0, opacity: 0 });
+				}).on("mouseleave", function () {
+					gsap.to($ball, { duration: 0.3, scale: 1, opacity: $ballOpacity });
+				});
 
 			// Hide on click.
 			$("a")
@@ -2594,20 +2537,20 @@
 				.not('[href^="tel"]') // omit from selection.
 				.not(".creativesoul-btn-disabled") // omit from selection.
 				.not('[data-fancybox]') // omit from selection
-				.on('click', function() {
+				.on('click', function () {
 					gsap.to($ball, { duration: 0.3, scale: 1.3, autoAlpha: 0 });
-			});
+				});
 
 			// Show/hide on document leave/enter.
-			$(document).on("mouseleave", function() {
+			$(document).on("mouseleave", function () {
 				gsap.to("#magic-cursor", { duration: 0.3, autoAlpha: 0 });
-			}).on("mouseenter", function() {
+			}).on("mouseenter", function () {
 				gsap.to("#magic-cursor", { duration: 0.3, autoAlpha: 1 });
 			});
 
 			// Show as the mouse moves.
-			$(document).mousemove(function() {
-				gsap.to("#magic-cursor", {duration: 0.3, autoAlpha: 1 });
+			$(document).mousemove(function () {
+				gsap.to("#magic-cursor", { duration: 0.3, autoAlpha: 1 });
 			});
 		}
 	}
@@ -2620,7 +2563,7 @@
 
 	// Add class to "creativesoul-section" if "creativesoul-section-background" exists
 	// ==========================
-	$(".creativesoul-section-background").each(function() {
+	$(".creativesoul-section-background").each(function () {
 		const $this = $(this);
 		const $thisParent = $this.parents(".creativesoul-section");
 
@@ -2636,19 +2579,19 @@
 	// ================
 
 	// Wrap all button content
-	$(".creativesoul-btn").each(function() {
+	$(".creativesoul-btn").each(function () {
 		$(this).contents().wrapAll('<span class="creativesoul-btn-inner"></span>');
 	});
 
 	// creativesoul-Button disabled (prevent click)
-	$(".creativesoul-btn-disabled").on("click", function() {
+	$(".creativesoul-btn-disabled").on("click", function () {
 		return false;
 	});
-	
-	
+
+
 	// Force page scroll position to top on refresh (do not remove!)
 	// =========================
-	$(window).on("pagehide", function(){
+	$(window).on("pagehide", function () {
 		$(window).scrollTop(0);
 	});
 
@@ -2660,9 +2603,9 @@
 
 	// Hover fix for iOS
 	// ==================
-	$("*").on("touchstart",function() {
+	$("*").on("touchstart", function () {
 		$(this).trigger("hover");
-	}).on("touchend",function() {
+	}).on("touchend", function () {
 		$(this).trigger("hover");
 	});
 

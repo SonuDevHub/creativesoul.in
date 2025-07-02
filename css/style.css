@@ -2668,11 +2668,7 @@ body.is-mobile .ph-mask {
 }
 
 
-/* Scroll down  
-=============== 
-* Note: Circle shown only if class "ph-full" or "ph-full-m" is enabled in "page-header" but not on small screens! 
-* Otherwise, only the arrow icon will be shown to save space.
-*/
+
 .creativesoul-scroll-down {
 	position: absolute;
 	display: block;
