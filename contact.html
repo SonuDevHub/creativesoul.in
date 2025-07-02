@@ -26,9 +26,37 @@
 	<link rel="stylesheet" href="css/other-classes.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/light-theme.css">
-
 </head>
+<script>
+    document.addEventListener('contextmenu', function (e) {
+        // Disable right-click
+        e.preventDefault();
+    });
 
+    document.addEventListener('keydown', function (e) {
+        // Block all common key combinations for source viewing / dev tools
+
+        // Windows/Linux Shortcuts
+        if (
+            (e.ctrlKey && ['u', 's', 'c', 'a', 'x', 'p'].includes(e.key.toLowerCase())) || // Ctrl+U/S/C/A/X/P
+            (e.ctrlKey && e.shiftKey && ['i', 'j'].includes(e.key.toLowerCase())) || // Ctrl+Shift+I/J
+            (e.key === 'F12') // F12
+        ) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        // Mac Shortcuts
+        if (
+            (e.metaKey && ['u', 's', 'c', 'a', 'x', 'p'].includes(e.key.toLowerCase())) || // Cmd+U/S/C/A/X/P
+            (e.metaKey && e.altKey && e.key.toLowerCase() === 'u') || // Cmd+Option+U
+            (e.metaKey && e.shiftKey && ['i', 'j'].includes(e.key.toLowerCase()))
+        ) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    });
+</script>
 <body id="body"
 	class="creativesoul-transition creativesoul-noise creativesoul-magic-cursor creativesoul-smooth-scroll creativesoul-lightmode-default">
 	<main id="body-inner">
