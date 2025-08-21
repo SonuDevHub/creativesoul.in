@@ -29,11 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Email content
         $mail->setFrom('sonu.pandey@apexdigitech.in', 'Creative Soul');
-        $mail->addAddress('contactsonupandey@gmail.com');
+        $mail->addAddress('contactsonupandey@gmail.com',"Creative Soul");
         $mail->addReplyTo($email, $name);
 
         $mail->isHTML(true);
-        $mail->Subject = 'Website Enquiry';
+        $mail->Subject = 'Website Enquiry Of Creative Soul';
         $mail->Body    = "
             <strong>Sender Name:</strong> $name<br>
             <strong>Email:</strong> $email<br>

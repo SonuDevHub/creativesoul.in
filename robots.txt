@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /c.php
 
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://creativesoul.in/sitemap.xml
