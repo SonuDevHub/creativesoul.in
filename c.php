@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $mail->Port       = 587;
 
         // Email content
-        $mail->setFrom('sonu.pandey@apexdigitech.in', 'Apex IT Solutions');
+        $mail->setFrom('sonu.pandey@apexdigitech.in', 'Creative Soul');
         $mail->addAddress('contactsonupandey@gmail.com');
         $mail->addReplyTo($email, $name);
 
