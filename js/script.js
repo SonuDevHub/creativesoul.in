@@ -2509,13 +2509,8 @@
 				$(".creativesoul-btn").parents(".magnetic-wrap").addClass("creativesoul-magnetic-btn");
 			}
 
-
-			// Show/hide magic cursor
-			// =======================
-
-			// Hide on hover.
 			$("a, button, .creativesoul-magnetic-btn, .creativesoul-form-control, .creativesoul-form-radio, .creativesoul-form-check, .creativesoul-hide-cursor, .creativesoul-video, iframe, body.ph-mask-on .ph-caption, .creativesoul-cfm-close") // class "hide-cursor" is for global use.
-				.not(".not-hide-cursor") // omit from selection (class "not-hide-cursor" is for global use).
+				.not(".not-hide-cursor") 
 				.not(".cursor-alter") // omit from selection
 				.not("#page-header:not(.ph-full) .creativesoul-scroll-down-inner") // omit from selection
 				.not(".ph-social > ul > li a") // omit from selection
@@ -2557,12 +2552,7 @@
 
 
 
-	// ================================================================
-	// Miscellaneous
-	// ================================================================
-
-	// Add class to "creativesoul-section" if "creativesoul-section-background" exists
-	// ==========================
+	
 	$(".creativesoul-section-background").each(function () {
 		const $this = $(this);
 		const $thisParent = $this.parents(".creativesoul-section");
@@ -2575,34 +2565,24 @@
 	});
 
 
-	// creativesoul-Buttons
-	// ================
 
-	// Wrap all button content
 	$(".creativesoul-btn").each(function () {
 		$(this).contents().wrapAll('<span class="creativesoul-btn-inner"></span>');
 	});
 
-	// creativesoul-Button disabled (prevent click)
 	$(".creativesoul-btn-disabled").on("click", function () {
 		return false;
 	});
 
 
-	// Force page scroll position to top on refresh (do not remove!)
-	// =========================
 	$(window).on("pagehide", function () {
 		$(window).scrollTop(0);
 	});
 
 
-	// Set the footer copyright year to update automatically.
-	// =========================
 	$(".creativesoul-copyright-year").html(new Date().getFullYear());
 
 
-	// Hover fix for iOS
-	// ==================
 	$("*").on("touchstart", function () {
 		$(this).trigger("hover");
 	}).on("touchend", function () {
